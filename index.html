@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Travel Map</title>
+
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: rgba(255,255,255,0.92);
+        --panel2: rgba(255,255,255,0.85);
+        --text: #0e1324;
+        --muted: rgba(14,19,36,0.65);
+        --border: rgba(14,19,36,0.12);
+        --shadow: 0 10px 30px rgba(0,0,0,0.25);
+        --radius: 16px;
+      }
+      html, body { height: 100%; margin: 0; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); }
+
+      /* Layout */
+      .app {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+      }
+      @media (max-width: 900px) {
+        .app { grid-template-columns: 1fr; grid-template-rows: 46% 54%; }
+      }
+
+      #map { height: 100%; width: 100%; }
+
+      /* Left timeline panel */
+      .sidebar {
+        background: rgba(255,255,255,0.06);
+        backdrop-filter: blur(10px);
+        padding: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .card {
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+      .header {
+        padding: 14px 14px 10px;
+      }
+      .title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0;
+      }
+      .subtitle {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .timeline {
+        padding: 8px;
+        overflow: auto;
+        max-height: 100%;
+      }
+      .stop {
+        padding: 10px 10px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .stop:hover { background: rgba(14,19,36,0.05); }
+      .stop.selected {
+        background: rgba(14,19,36,0.06);
+        border-color: rgba(14,19,36,0.18);
+      }
+      .stopRow {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .stopName { font-weight: 700; color: var(--text); }
+      .stopDates { font-size: 12px; color: var(--muted); white-space: nowrap; }
+      .stopNote { font-size: 13px; color: var(--text); opacity: 0.9; line-height: 1.35; }
+      .divider { height: 1px; background: var(--border); margin: 8px 6px; }
+
+      /* Top-right controls over map */
+      .controls {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 1000;
+        display: grid;
+        gap: 10px;
+        width: min(360px, calc(100vw - 24px));
+      }
+      .controlBox {
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        padding: 12px 12px;
+      }
+      .controlGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 6px; }
+      input, select, button {
+        width: 100%;
+        padding: 9px 10px;
+        font-size: 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(14,19,36,0.18);
+        background: white;
+        color: var(--text);
+        box-sizing: border-box;
+      }
+      button {
+        cursor: pointer;
+        font-weight: 650;
+        background: rgba(14,19,36,0.92);
+        color: white;
+        border-color: rgba(14,19,36,0.92);
+      }
+      button.secondary {
+        background: white;
+        color: var(--text);
+      }
+      .meta {
+        font-size: 13px;
+        color: var(--text);
+        line-height: 1.35;
+      }
+      .meta .muted { color: var(--muted); }
+      .pill {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: rgba(14,19,36,0.08);
+        border: 1px solid rgba(14,19,36,0.12);
+        font-size: 12px;
+        color: var(--text);
+      }
+
+      /* Password gate overlay */
+      .gate {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: none;
+        place-items: center;
+        background: rgba(11,16,32,0.75);
+        backdrop-filter: blur(6px);
+        padding: 16px;
+      }
+      .gateCard {
+        width: min(480px, 100%);
+        background: var(--panel);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255,255,255,0.25);
+        padding: 16px;
+      }
+      .gateCard h2 { margin: 0 0 6px; color: var(--text); }
+      .gateCard p { margin: 0 0 12px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+      .gateRow { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+      .warn { margin-top: 10px; font-size: 12px; color: rgba(14,19,36,0.65); }
+      .error { color: #b00020; font-size: 13px; margin-top: 8px; display:none; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Simple password gate -->
+    <div class="gate" id="gate">
+      <div class="gateCard">
+        <h2>Private travel map</h2>
+        <p>Enter the passcode to view the map. (This is a simple front-end gate — fine for casual privacy, not strong security.)</p>
+        <div class="gateRow">
+          <input id="gateInput" type="password" placeholder="Passcode" />
+          <button id="gateBtn">Unlock</button>
+        </div>
+        <div class="error" id="gateError">Incorrect passcode.</div>
+        <div class="warn">
+          Tip: If you want stronger privacy, host it behind a platform password (Netlify/Cloudflare Access) or keep the repo private.
+        </div>
+      </div>
+    </div>
+
+    <div class="app">
+      <!-- Timeline -->
+      <aside class="sidebar">
+        <div class="card">
+          <div class="header">
+            <p class="title" id="tripTitle">Our Travels</p>
+            <p class="subtitle" id="tripSubtitle">Pick a date (top-right) or click a stop.</p>
+          </div>
+        </div>
+
+        <div class="card timeline" id="timeline"></div>
+      </aside>
+
+      <!-- Map -->
+      <main style="position:relative;">
+        <div id="map"></div>
+
+        <div class="controls">
+          <div class="controlBox">
+            <div class="controlGrid">
+              <div class="row2">
+                <div>
+                  <label for="datePicker">Date</label>
+                  <input id="datePicker" type="date" />
+                </div>
+                <div>
+                  <label for="mode">Map view</label>
+                  <select id="mode">
+                    <option value="selected">Focus selected</option>
+                    <option value="all">Show whole trip</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row2">
+                <button class="secondary" id="todayBtn">Jump to today</button>
+                <button id="nextBtn">Next stop</button>
+              </div>
+
+              <div class="meta" id="meta"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      /********************************************************************
+       * CONFIG
+       ********************************************************************/
+
+      // If you set this to a non-empty string, the page will require it.
+      // Example: const PASSCODE = "pineapple";
+      const PASSCODE = ""; // <- set a passcode if you want private mode
+
+      // Optional external JSON file (recommended). If present, it overrides the embedded itinerary.
+      // Put an `itinerary.json` in the same folder as index.html.
+      const ITINERARY_JSON_URL = "itinerary.json";
+
+      // Embedded fallback itinerary (date RANGES!)
+      // Dates must be YYYY-MM-DD.
+      const EMBEDDED_ITINERARY = {
+        title: "Leah & Co. — 2026 Adventure",
+        subtitle: "A living map of our upcoming travels ✈️",
+        stops: [
+          {
+            id: "paris",
+            name: "Paris",
+            country: "France",
+            start: "2026-03-10",
+            end: "2026-03-13",
+            lat: 48.8566,
+            lng: 2.3522,
+            note: "Default test"
+          }
+        ]
+      };
+
+      /********************************************************************
+       * UTILITIES
+       ********************************************************************/
+
+      function parseDateUTC(yyyyMmDd) {
+        // Force UTC midnight so date math is stable across timezones
+        const [y, m, d] = yyyyMmDd.split("-").map(Number);
+        return new Date(Date.UTC(y, m - 1, d));
+      }
+
+      function fmtRange(start, end) {
+        return `${start} → ${end}`;
+      }
+
+      function withinRange(dateStr, startStr, endStr) {
+        // inclusive
+        const d = parseDateUTC(dateStr).getTime();
+        const s = parseDateUTC(startStr).getTime();
+        const e = parseDateUTC(endStr).getTime();
+        return d >= s && d <= e;
+      }
+
+      function clampDate(date, min, max) {
+        const t = date.getTime();
+        if (t < min.getTime()) return min;
+        if (t > max.getTime()) return max;
+        return date;
+      }
+
+      function yyyyMmDdLocal(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      }
+
+      function sortStops(stops) {
+        return [...stops].sort((a, b) => a.start.localeCompare(b.start));
+      }
+
+      function uniqueLatLngKey(lat, lng) {
+        return `${lat.toFixed(6)},${lng.toFixed(6)}`;
+      }
+
+      /********************************************************************
+       * DATA LOADING
+       ********************************************************************/
+
+      async function loadItinerary() {
+        try {
+          const res = await fetch(ITINERARY_JSON_URL, { cache: "no-store" });
+          if (!res.ok) throw new Error("no external json");
+          const json = await res.json();
+          if (!json || !Array.isArray(json.stops)) throw new Error("bad json");
+          return json;
+        } catch {
+          return EMBEDDED_ITINERARY;
+        }
+      }
+
+      /********************************************************************
+       * APP STATE
+       ********************************************************************/
+
+      let itinerary = null;
+      let stops = [];
+      let selectedStopId = null;
+
+      // Leaflet stuff
+      let map = null;
+      let markersById = new Map();
+      let routeLine = null;
+
+      /********************************************************************
+       * UI ELEMENTS
+       ********************************************************************/
+
+      const elTripTitle = document.getElementById("tripTitle");
+      const elTripSubtitle = document.getElementById("tripSubtitle");
+      const elTimeline = document.getElementById("timeline");
+      const elDatePicker = document.getElementById("datePicker");
+      const elMode = document.getElementById("mode");
+      const elMeta = document.getElementById("meta");
+      const elTodayBtn = document.getElementById("todayBtn");
+      const elNextBtn = document.getElementById("nextBtn");
+
+      /********************************************************************
+       * PASSWORD GATE
+       ********************************************************************/
+
+      function setupGate() {
+        const gate = document.getElementById("gate");
+        const gateInput = document.getElementById("gateInput");
+        const gateBtn = document.getElementById("gateBtn");
+        const gateError = document.getElementById("gateError");
+
+        if (!PASSCODE) return; // no gate
+
+        gate.style.display = "grid";
+
+        function tryUnlock() {
+          const val = gateInput.value || "";
+          if (val === PASSCODE) {
+            gate.style.display = "none";
+          } else {
+            gateError.style.display = "block";
+          }
+        }
+
+        gateBtn.addEventListener("click", tryUnlock);
+        gateInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") tryUnlock();
+        });
+      }
+
+      /********************************************************************
+       * MAP
+       ********************************************************************/
+
+      function initMap() {
+        map = L.map("map", { zoomControl: true }).setView([20, 0], 2);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
+      }
+
+      function buildRouteAndPins() {
+        // Clear old
+        markersById.forEach(m => m.remove());
+        markersById.clear();
+        if (routeLine) { routeLine.remove(); routeLine = null; }
+
+        // Create markers (all)
+        const latlngs = [];
+        const used = new Set();
+
+        for (const stop of stops) {
+          const ll = [stop.lat, stop.lng];
+          latlngs.push(ll);
+
+          const marker = L.marker(ll).addTo(map);
+          marker.on("click", () => selectStop(stop.id, { from: "marker" }));
+
+          marker.bindPopup(popupHtml(stop), { closeButton: true });
+          markersById.set(stop.id, marker);
+
+          // If multiple stops share same coords, slightly nudge later ones so they’re clickable
+          // (keeps route still accurate-ish visually)
+          const key = uniqueLatLngKey(stop.lat, stop.lng);
+          if (used.has(key)) {
+            const jitter = 0.005 * (Math.random() - 0.5);
+            marker.setLatLng([stop.lat + jitter, stop.lng + jitter]);
+          }
+          used.add(key);
+        }
+
+        // Route line
+        routeLine = L.polyline(latlngs, {
+          weight: 3,
+          opacity: 0.8
+        }).addTo(map);
+      }
+
+      function popupHtml(stop) {
+        const title = `${stop.name}${stop.country ? ", " + stop.country : ""}`;
+        const note = stop.note ? `<div style="margin-top:6px;">${escapeHtml(stop.note)}</div>` : "";
+        return `
+          <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            <div style="font-weight:700;">${escapeHtml(title)}</div>
+            <div style="font-size:12px;opacity:.8;">${escapeHtml(fmtRange(stop.start, stop.end))}</div>
+            ${note}
+          </div>
+        `;
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function focusAll() {
+        const group = L.featureGroup([...markersById.values()]);
+        if (group.getLayers().length === 0) return;
+        map.fitBounds(group.getBounds().pad(0.2));
+      }
+
+      function focusStop(stop) {
+        const marker = markersById.get(stop.id);
+        if (!marker) return;
+        map.flyTo(marker.getLatLng(), 10, { duration: 0.9 });
+        marker.openPopup();
+      }
+
+      /********************************************************************
+       * TIMELINE
+       ********************************************************************/
+
+      function renderTimeline() {
+        elTimeline.innerHTML = "";
+
+        for (let i = 0; i < stops.length; i++) {
+          const stop = stops[i];
+
+          const item = document.createElement("div");
+          item.className = "stop" + (stop.id === selectedStopId ? " selected" : "");
+          item.dataset.stopId = stop.id;
+
+          const row = document.createElement("div");
+          row.className = "stopRow";
+
+          const name = document.createElement("div");
+          name.className = "stopName";
+          name.textContent = stop.name;
+
+          const dates = document.createElement("div");
+          dates.className = "stopDates";
+          dates.textContent = fmtRange(stop.start, stop.end);
+
+          row.appendChild(name);
+          row.appendChild(dates);
+
+          const note = document.createElement("div");
+          note.className = "stopNote";
+          note.textContent = stop.note || "";
+
+          item.appendChild(row);
+          if (stop.note) item.appendChild(note);
+
+          item.addEventListener("click", () => selectStop(stop.id, { from: "timeline" }));
+
+          elTimeline.appendChild(item);
+
+          if (i !== stops.length - 1) {
+            const divider = document.createElement("div");
+            divider.className = "divider";
+            elTimeline.appendChild(divider);
+          }
+        }
+      }
+
+      function updateMeta(stop, selectedDateStr) {
+        if (!stop) {
+          elMeta.innerHTML = `
+            <div class="muted">No stop matches <span class="pill">${escapeHtml(selectedDateStr)}</span>.</div>
+            <div class="muted" style="margin-top:6px;">Pick another date, or add a stop that covers it.</div>
+          `;
+          return;
+        }
+
+        const title = `${stop.name}${stop.country ? ", " + stop.country : ""}`;
+        elMeta.innerHTML = `
+          <div><span class="pill">Selected date</span> <strong>${escapeHtml(selectedDateStr)}</strong></div>
+          <div style="margin-top:8px;"><span class="pill">Stop</span> <strong>${escapeHtml(title)}</strong></div>
+          <div class="muted" style="margin-top:4px;">${escapeHtml(fmtRange(stop.start, stop.end))}</div>
+          ${stop.note ? `<div style="margin-top:8px;">${escapeHtml(stop.note)}</div>` : ""}
+        `;
+      }
+
+      /********************************************************************
+       * SELECTION LOGIC (date -> stop)
+       ********************************************************************/
+
+      function stopForDate(dateStr) {
+        // Find first stop whose range includes date
+        return stops.find(s => withinRange(dateStr, s.start, s.end)) || null;
+      }
+
+      function setDatePickerTo(dateStr) {
+        elDatePicker.value = dateStr;
+      }
+
+      function selectStop(stopId, opts = {}) {
+        selectedStopId = stopId;
+
+        // If selection came from timeline/marker, set date picker to start of range for clarity
+        const stop = stops.find(s => s.id === stopId);
+        if (stop && opts.from !== "date") {
+          setDatePickerTo(stop.start);
+        }
+
+        // Update marker emphasis via popup & focus settings
+        if (stop) {
+          // Open popup
+          const marker = markersById.get(stop.id);
+          if (marker) marker.bindPopup(popupHtml(stop)).openPopup();
+
+          if (elMode.value === "selected") focusStop(stop);
+        }
+
+        // Update UI
+        renderTimeline();
+        updateMeta(stop, elDatePicker.value);
+      }
+
+      function selectByDate(dateStr) {
+        const stop = stopForDate(dateStr);
+        if (!stop) {
+          selectedStopId = null;
+          renderTimeline();
+          updateMeta(null, dateStr);
+          if (elMode.value === "all") focusAll();
+          return;
+        }
+        selectStop(stop.id, { from: "date" });
+      }
+
+      function nextStop() {
+        if (!stops.length) return;
+
+        const currentDateStr = elDatePicker.value;
+        const current = stopForDate(currentDateStr);
+
+        if (!current) {
+          // If date doesn't match anything, jump to next upcoming stop by start date
+          const next = stops.find(s => s.start >= currentDateStr) || stops[0];
+          selectStop(next.id);
+          return;
+        }
+
+        const idx = stops.findIndex(s => s.id === current.id);
+        const next = stops[(idx + 1) % stops.length];
+        selectStop(next.id);
+      }
+
+      /********************************************************************
+       * INIT
+       ********************************************************************/
+
+      async function main() {
+        setupGate();
+
+        itinerary = await loadItinerary();
+        stops = sortStops(itinerary.stops || []);
+
+        // Fill titles
+        elTripTitle.textContent = itinerary.title || "Our Travels";
+        elTripSubtitle.textContent = itinerary.subtitle || "Pick a date (top-right) or click a stop.";
+
+        initMap();
+        buildRouteAndPins();
+
+        // Set date picker bounds based on trip range
+        if (stops.length) {
+          const minDate = stops[0].start;
+          const maxDate = stops[stops.length - 1].end;
+          elDatePicker.min = minDate;
+          elDatePicker.max = maxDate;
+        }
+
+        // Default date:
+        // - If today is inside any stop, use today
+        // - Else use first stop start date
+        const todayStr = yyyyMmDdLocal(new Date());
+        const todayStop = stopForDate(todayStr);
+        const defaultDate = todayStop ? todayStr : (stops[0]?.start || todayStr);
+        setDatePickerTo(defaultDate);
+
+        // Initial selection
+        selectByDate(defaultDate);
+
+        // Default map mode: show selected
+        elMode.value = "selected";
+
+        // If user chooses "all", show all bounds immediately
+        if (elMode.value === "all") focusAll();
+
+        // Events
+        elDatePicker.addEventListener("change", (e) => selectByDate(e.target.value));
+        elMode.addEventListener("change", () => {
+          if (elMode.value === "all") focusAll();
+          else {
+            const stop = stopForDate(elDatePicker.value);
+            if (stop) focusStop(stop);
+          }
+        });
+
+        elTodayBtn.addEventListener("click", () => {
+          const today = yyyyMmDdLocal(new Date());
+          // clamp within picker bounds if set
+          let d = parseDateUTC(today);
+          if (elDatePicker.min) d = clampDate(d, parseDateUTC(elDatePicker.min), parseDateUTC(elDatePicker.max));
+          const clamped = `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,"0")}-${String(d.getUTCDate()).padStart(2,"0")}`;
+          setDatePickerTo(clamped);
+          selectByDate(clamped);
+        });
+
+        elNextBtn.addEventListener("click", nextStop);
+
+        // Helpful initial framing
+        if (elMode.value === "selected") {
+          const stop = stopForDate(elDatePicker.value);
+          if (stop) focusStop(stop);
+        }
+      }
+
+      main();
+    </script>
+  </body>
+</html>

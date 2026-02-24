@@ -1,0 +1,26 @@
+{
+  "title": "Our 2026 Trip",
+  "subtitle": "Follow along as we move!",
+  "stops": [
+    {
+      "id": "1",
+      "name": "Santiago",
+      "country": "Chile",
+      "start": "2026-05-19",
+      "end": "2026-05-20",
+      "lat": -33.4525,
+      "lng": -70.6586,
+      "note": "First stop"
+    },
+    {
+      "id": "2",
+      "name": "Los Lagos",
+      "country": "Chile",
+      "start": "2026-05-20",
+      "end": "2026-05-27",
+      "lat": -41.4689,
+      "lng": -72.9411,
+      "note": "Chile's lake district"
+    }
+  ]
+}
