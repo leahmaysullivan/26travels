@@ -16,11 +16,91 @@
       "id": "2",
       "name": "Los Lagos",
       "country": "Chile",
-      "start": "2026-05-20",
+      "start": "2026-05-21",
       "end": "2026-05-27",
       "lat": -41.4689,
       "lng": -72.9411,
       "note": "Chile's lake district"
-    }
+    },
+    {
+      "id": "3",
+      "name": "Atacama Desert",
+      "country": "Chile",
+      "start": "2026-05-27",
+      "end": "",
+      "lat": -23.8632,
+      "lng": -69.1418,
+      "note": ""
+    },
+    {
+      "id": "4",
+      "name": "Uyuni salt flats",
+      "country": "Bolivia",
+      "start": "2026-05-30",
+      "end": "",
+      "lat": -20.2666,
+      "lng": -67.6206,
+      "note": ""
+    },
+    {
+      "id": "5",
+      "name": "Ilampu",
+      "country": "Bolivia",
+      "start": "2026-06-03",
+      "end": "",
+      "lat": -11.9414,
+      "lng": -68.8346,
+      "note": ""
+    },
+    {
+      "id": "6",
+      "name": "La Paz",
+      "country": "Bolivia",
+      "start": "2026-06-05",
+      "end": "",
+      "lat": -16.4897,
+      "lng": -68.1192,
+      "note": ""
+    },
+    {
+      "id": "7",
+      "name": "Pantanal",
+      "country": "Brazil",
+      "start": "2026-06-07",
+      "end": "2026-06-13",
+      "lat": -15.5955,
+      "lng": -56.0926,
+      "note": "Starting in Cuiabá"
+    },
+    {
+      "id": "8",
+      "name": "Amazon",
+      "country": "Peru",
+      "start": "2026-06-16",
+      "end": "2026-06-23",
+      "lat": -12.0406,
+      "lng": -71.7230,
+      "note": "Manu National Park. Starting in Cusco."
+    },
+    {
+      "id": "9",
+      "name": "Cusco",
+      "country": "Peru",
+      "start": "2026-06-24",
+      "end": "2026-06-26",
+      "lat": -13.5320,
+      "lng": -71.9675,
+      "note": "Starting in Cusco"
+    },
+    {
+      "id": "10",
+      "name": "Machu Picchu",
+      "country": "Peru",
+      "start": "2026-06-26",
+      "end": "2026-06-30",
+      "lat": -13.2632,
+      "lng": -72.5453,
+      "note": "Starting in Cusco"
+    },
   ]
 }
