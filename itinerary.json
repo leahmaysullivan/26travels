@@ -27,7 +27,7 @@
       "name": "Atacama Desert",
       "country": "Chile",
       "start": "2026-05-27",
-      "end": "",
+      "end": null,
       "lat": -23.8632,
       "lng": -69.1418,
       "note": ""
@@ -37,7 +37,7 @@
       "name": "Uyuni salt flats",
       "country": "Bolivia",
       "start": "2026-05-30",
-      "end": "",
+      "end": null,
       "lat": -20.2666,
       "lng": -67.6206,
       "note": ""
@@ -47,7 +47,7 @@
       "name": "Ilampu",
       "country": "Bolivia",
       "start": "2026-06-03",
-      "end": "",
+      "end": null,
       "lat": -11.9414,
       "lng": -68.8346,
       "note": ""
@@ -57,7 +57,7 @@
       "name": "La Paz",
       "country": "Bolivia",
       "start": "2026-06-05",
-      "end": "",
+      "end": null,
       "lat": -16.4897,
       "lng": -68.1192,
       "note": ""
