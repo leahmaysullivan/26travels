@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Travel Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -80,7 +80,7 @@
     .stop-divider { height: 1px; background: var(--ink3); margin: 6px 4px; }
 
     /* ── Map ── */
-    main { position: relative; overflow: hidden; height: 100vh; }
+    main { position: relative; overflow: hidden; height: 100dvh; }
 #map { height: 100%; width: 100%; }
 
     /* ── Controls ── */
@@ -219,7 +219,7 @@
     @media (max-width: 860px) {
       .app { grid-template-columns: 1fr; }
       .sidebar { display: none; }
-      .controls { top: auto; bottom: 12px; left: 12px; right: 12px; width: auto; }
+      .controls { top: auto; bottom: calc(12px + env(safe-area-inset-bottom)); left: 12px; right: 12px; width: auto; }
     }
 
     .leaflet-popup-content-wrapper { border-radius: 12px !important; font-family: var(--sans) !important; }
