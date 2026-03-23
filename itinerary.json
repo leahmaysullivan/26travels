@@ -91,6 +91,156 @@
       "lat": -13.2632,
       "lng": -72.5453,
       "note": "Starting in Cusco"
+    },
+    {
+      "id": "11",
+      "name": "Colca Canyon",
+      "country": "Peru",
+      "start": "2026-07-04",
+      "end": "2026-07-04",
+      "lat": -15.6333,
+      "lng": -71.9833,
+      "note": ""
+    },
+    {
+      "id": "12",
+      "name": "Nazca Lines",
+      "country": "Peru",
+      "start": "2026-07-05",
+      "end": "2026-07-05",
+      "lat": -14.7272,
+      "lng": -75.1300,
+      "note": ""
+    },
+    {
+      "id": "13",
+      "name": "Lima",
+      "country": "Peru",
+      "start": "2026-07-06",
+      "end": "2026-07-06",
+      "lat": -12.0464,
+      "lng": -77.0428,
+      "note": ""
+    },
+    {
+      "id": "14",
+      "name": "Huaraz",
+      "country": "Peru",
+      "start": "2026-07-07",
+      "end": "2026-07-09",
+      "lat": -9.5279,
+      "lng": -77.5278,
+      "note": ""
+    },
+    {
+      "id": "15",
+      "name": "Cotopaxi",
+      "country": "Ecuador",
+      "start": "2026-07-12",
+      "end": "2026-07-12",
+      "lat": -0.6843,
+      "lng": -78.4374,
+      "note": ""
+    },
+    {
+      "id": "16",
+      "name": "Machalilla National Park",
+      "country": "Ecuador",
+      "start": "2026-07-14",
+      "end": "2026-07-16",
+      "lat": -1.5833,
+      "lng": -80.8000,
+      "note": ""
+    },
+    {
+      "id": "17",
+      "name": "Quito",
+      "country": "Ecuador",
+      "start": "2026-07-17",
+      "end": "2026-07-17",
+      "lat": -0.2295,
+      "lng": -78.5243,
+      "note": ""
+    },
+    {
+      "id": "18",
+      "name": "Reserva Las Tangaras",
+      "country": "Ecuador",
+      "start": "2026-07-18",
+      "end": "2026-07-20",
+      "lat": 0.0500,
+      "lng": -78.9833,
+      "note": ""
+    },
+    {
+      "id": "19",
+      "name": "Bogotá",
+      "country": "Colombia",
+      "start": "2026-07-22",
+      "end": "2026-07-30",
+      "lat": 4.7110,
+      "lng": -74.0721,
+      "note": ""
+    },
+    {
+      "id": "20",
+      "name": "Capurgana",
+      "country": "Colombia",
+      "start": "2026-07-31",
+      "end": "2026-07-31",
+      "lat": 8.6333,
+      "lng": -77.3500,
+      "note": ""
+    },
+    {
+      "id": "21",
+      "name": "San Blas",
+      "country": "Panama",
+      "start": "2026-08-01",
+      "end": "2026-08-04",
+      "lat": 9.5833,
+      "lng": -78.9167,
+      "note": ""
+    },
+    {
+      "id": "22",
+      "name": "Panama City",
+      "country": "Panama",
+      "start": "2026-08-05",
+      "end": "2026-08-06",
+      "lat": 8.9936,
+      "lng": -79.5197,
+      "note": ""
+    },
+    {
+      "id": "23",
+      "name": "Boquete",
+      "country": "Panama",
+      "start": "2026-08-07",
+      "end": "2026-08-08",
+      "lat": 8.7792,
+      "lng": -82.4408,
+      "note": ""
+    },
+    {
+      "id": "24",
+      "name": "Finca Exótica Lodge",
+      "country": "Costa Rica",
+      "start": "2026-08-10",
+      "end": "2026-08-11",
+      "lat": 8.6667,
+      "lng": -83.5333,
+      "note": "Osa Peninsula"
+    },
+    {
+      "id": "25",
+      "name": "La Sirena",
+      "country": "Costa Rica",
+      "start": "2026-08-12",
+      "end": "2026-08-14",
+      "lat": 8.4667,
+      "lng": -83.5833,
+      "note": "Corcovado National Park. Ending in Puerto Jimenez."
     }
   ]
 }
