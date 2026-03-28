@@ -3,17 +3,17 @@
   "subtitle": "Follow along as we move!",
   "stops": [
     {
-      "id": "1",
+      "id": "100",
       "name": "Santiago",
       "country": "Chile",
       "start": "2026-05-19",
-      "end": "2026-05-20",
+      "end": "2026-05-21",
       "lat": -33.4525,
       "lng": -70.6586,
       "note": "First stop"
     },
     {
-      "id": "2",
+      "id": "200",
       "name": "Los Lagos",
       "country": "Chile",
       "start": "2026-05-21",
@@ -23,7 +23,7 @@
       "note": "Chile's lake district"
     },
     {
-      "id": "3",
+      "id": "300",
       "name": "Atacama Desert",
       "country": "Chile",
       "start": "2026-05-27",
@@ -33,37 +33,87 @@
       "note": ""
     },
     {
-      "id": "4",
+      "id": "400",
       "name": "Uyuni salt flats",
       "country": "Bolivia",
-      "start": "2026-05-30",
+      "start": "2026-06-01",
       "end": null,
       "lat": -20.2666,
       "lng": -67.6206,
       "note": ""
     },
     {
-      "id": "6",
+      "id": "600",
       "name": "La Paz",
       "country": "Bolivia",
-      "start": "2026-06-05",
+      "start": "2026-06-02",
       "end": null,
       "lat": -16.4897,
       "lng": -68.1192,
+      "note": "Starting the journey to the pantanal"
+    },
+    {
+      "id": "650",
+      "name": "Santa Cruz",
+      "country": "Bolivia",
+      "start": "2026-06-02",
+      "end": null,
+      "lat": -17.7981,
+      "lng": -63.1925,
       "note": ""
     },
     {
-      "id": "7",
+      "id": "675",
+      "name": "San Matias",
+      "country": "Bolivia",
+      "start": "2026-06-03",
+      "end": null,
+      "lat": -16.3608,
+      "lng": -58.4008,
+      "note": ""
+    },
+    {
+      "id": "700",
       "name": "Pantanal",
       "country": "Brazil",
-      "start": "2026-06-07",
-      "end": "2026-06-13",
+      "start": "2026-06-04",
+      "end": "2026-06-11",
       "lat": -15.5955,
       "lng": -56.0926,
       "note": "Starting in Cuiabá"
     },
     {
-      "id": "8",
+      "id": "750",
+      "name": "San Matias",
+      "country": "Bolivia",
+      "start": "2026-06-11",
+      "end": null,
+      "lat": -16.3608,
+      "lng": -58.4008,
+      "note": ""
+    },
+    {
+      "id": "775",
+      "name": "Santa Cruz",
+      "country": "Bolivia",
+      "start": "2026-06-12",
+      "end": null,
+      "lat": -17.7981,
+      "lng": -63.1925,
+      "note": ""
+    },
+    {
+      "id": "780",
+      "name": "La Paz",
+      "country": "Bolivia",
+      "start": "2026-06-13",
+      "end": null,
+      "lat": -16.4897,
+      "lng": -68.1192,
+      "note": "Excursions from La Paz"
+    },
+    {
+      "id": "800",
       "name": "Amazon",
       "country": "Peru",
       "start": "2026-06-16",
@@ -73,7 +123,7 @@
       "note": "Manu National Park. Starting in Cusco."
     },
     {
-      "id": "9",
+      "id": "900",
       "name": "Cusco",
       "country": "Peru",
       "start": "2026-06-24",
@@ -83,7 +133,7 @@
       "note": "Starting in Cusco"
     },
     {
-      "id": "10",
+      "id": "1000",
       "name": "Machu Picchu",
       "country": "Peru",
       "start": "2026-06-26",
@@ -93,7 +143,7 @@
       "note": "Starting in Cusco"
     },
     {
-      "id": "11",
+      "id": "1100",
       "name": "Colca Canyon",
       "country": "Peru",
       "start": "2026-07-04",
@@ -103,7 +153,7 @@
       "note": ""
     },
     {
-      "id": "12",
+      "id": "1200",
       "name": "Nazca Lines",
       "country": "Peru",
       "start": "2026-07-05",
@@ -113,7 +163,7 @@
       "note": ""
     },
     {
-      "id": "13",
+      "id": "1300",
       "name": "Lima",
       "country": "Peru",
       "start": "2026-07-06",
@@ -123,7 +173,7 @@
       "note": ""
     },
     {
-      "id": "14",
+      "id": "1400",
       "name": "Huaraz",
       "country": "Peru",
       "start": "2026-07-07",
@@ -133,7 +183,7 @@
       "note": ""
     },
     {
-      "id": "15",
+      "id": "1500",
       "name": "Cotopaxi",
       "country": "Ecuador",
       "start": "2026-07-12",
@@ -143,7 +193,7 @@
       "note": ""
     },
     {
-      "id": "16",
+      "id": "1600",
       "name": "Machalilla National Park",
       "country": "Ecuador",
       "start": "2026-07-14",
@@ -153,7 +203,7 @@
       "note": ""
     },
     {
-      "id": "17",
+      "id": "1700",
       "name": "Quito",
       "country": "Ecuador",
       "start": "2026-07-17",
@@ -163,7 +213,7 @@
       "note": ""
     },
     {
-      "id": "18",
+      "id": "1800",
       "name": "Reserva Las Tangaras",
       "country": "Ecuador",
       "start": "2026-07-18",
@@ -173,7 +223,7 @@
       "note": ""
     },
     {
-      "id": "19",
+      "id": "1900",
       "name": "Bogotá",
       "country": "Colombia",
       "start": "2026-07-22",
@@ -183,7 +233,7 @@
       "note": ""
     },
     {
-      "id": "20",
+      "id": "2000",
       "name": "Capurgana",
       "country": "Colombia",
       "start": "2026-07-31",
@@ -193,7 +243,7 @@
       "note": ""
     },
     {
-      "id": "21",
+      "id": "2100",
       "name": "San Blas",
       "country": "Panama",
       "start": "2026-08-01",
@@ -203,7 +253,7 @@
       "note": ""
     },
     {
-      "id": "22",
+      "id": "2200",
       "name": "Panama City",
       "country": "Panama",
       "start": "2026-08-05",
@@ -213,7 +263,7 @@
       "note": ""
     },
     {
-      "id": "23",
+      "id": "2300",
       "name": "Boquete",
       "country": "Panama",
       "start": "2026-08-07",
@@ -223,7 +273,7 @@
       "note": ""
     },
     {
-      "id": "24",
+      "id": "2400",
       "name": "Finca Exótica Lodge",
       "country": "Costa Rica",
       "start": "2026-08-10",
@@ -233,7 +283,7 @@
       "note": "Osa Peninsula"
     },
     {
-      "id": "25",
+      "id": "2500",
       "name": "La Sirena",
       "country": "Costa Rica",
       "start": "2026-08-12",
