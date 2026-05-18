@@ -223,6 +223,156 @@
     }
 
     .leaflet-popup-content-wrapper { border-radius: 12px !important; font-family: var(--sans) !important; }
+
+/* ══════════════════════════════════════════
+   WEATHER MODULE CSS
+   Paste this block inside your existing <style> tag
+   ══════════════════════════════════════════ */
+
+/* ── Weather section wrapper ── */
+.wx-section {
+  margin-top: 12px;
+  border-top: 1px solid var(--ink3);
+  padding-top: 10px;
+}
+
+.wx-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wx-wrap.wx-loading,
+.wx-wrap.wx-empty {
+  font-size: 12px;
+  color: var(--ink2);
+  font-style: italic;
+}
+
+/* ── Individual weather row (Now / Arrival day) ── */
+.wx-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.wx-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: rgba(26,26,46,0.08);
+  color: var(--ink2);
+  border-radius: 6px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+
+.wx-badge-day {
+  background: rgba(200,105,42,0.1);
+  color: var(--accent);
+}
+
+.wx-emoji  { font-size: 18px; line-height: 1; }
+.wx-temp   { font-weight: 600; color: var(--ink); }
+.wx-desc   { color: var(--ink2); }
+.wx-wind   { font-size: 11px; color: var(--ink2); margin-left: auto; }
+.wx-rain   { font-size: 11px; color: #2a72c8; }
+
+/* ── Spinner ── */
+.wx-spinner {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border: 2px solid var(--ink3);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: wx-spin 0.7s linear infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.wx-spinner-sm {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border: 1.5px solid var(--ink3);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: wx-spin 0.7s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes wx-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── "Whole trip" weather grid ── */
+.wx-all-grid {
+  margin-top: 14px;
+  border-top: 1px solid var(--ink3);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wx-all-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  margin-bottom: 4px;
+}
+
+.wx-all-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.wx-all-name {
+  font-weight: 600;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.wx-all-data {
+  color: var(--ink2);
+  text-align: right;
+}
+
+.wx-all-data b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.wx-all-data span {
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+.wx-all-na {
+  font-size: 11px;
+  color: var(--ink2);
+  font-style: italic;
+}
+
+/* ── Compact inline weather (sidebar) ── */
+.wx-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--ink2);
+  margin-top: 3px;
+}
+.wx-temp-sm { font-weight: 600; color: var(--ink); }
+.wx-desc-sm { font-size: 11px; }
+
   </style>
 </head>
 <body>
@@ -649,5 +799,361 @@
 
   main();
 </script>
+
+/**
+ * WEATHER MODULE — drop this <script> block just before </body>
+ * in your Travel Map HTML, right after the existing <script> closes.
+ *
+ * Uses Open-Meteo (https://open-meteo.com) — free, no API key needed.
+ *
+ * Also paste the CSS block (below) into your existing <style> tag.
+ *
+ * ─────────────────────────────────────────────────────────────────
+ * HOW IT WORKS
+ *  • "Today" panel  → shows current conditions + today's high/low
+ *  • "Select date"  → shows conditions for the selected date
+ *                      (if within 16-day forecast window, else "too far ahead")
+ *  • "Whole trip"   → shows a compact weather summary per stop
+ *                      (current for current/past stops, arrival-day for future)
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/* ───── WMO weather-code → description + emoji ───── */
+const WMO = {
+  0:  ["Clear sky",          "☀️"],
+  1:  ["Mainly clear",       "🌤️"],
+  2:  ["Partly cloudy",      "⛅"],
+  3:  ["Overcast",           "☁️"],
+  45: ["Foggy",              "🌫️"],
+  48: ["Icy fog",            "🌫️"],
+  51: ["Light drizzle",      "🌦️"],
+  53: ["Drizzle",            "🌦️"],
+  55: ["Heavy drizzle",      "🌧️"],
+  61: ["Slight rain",        "🌧️"],
+  63: ["Rain",               "🌧️"],
+  65: ["Heavy rain",         "🌧️"],
+  71: ["Slight snow",        "🌨️"],
+  73: ["Snow",               "❄️"],
+  75: ["Heavy snow",         "❄️"],
+  77: ["Snow grains",        "🌨️"],
+  80: ["Showers",            "🌦️"],
+  81: ["Heavy showers",      "🌧️"],
+  82: ["Violent showers",    "⛈️"],
+  85: ["Snow showers",       "🌨️"],
+  86: ["Heavy snow showers", "❄️"],
+  95: ["Thunderstorm",       "⛈️"],
+  96: ["Thunderstorm + hail","⛈️"],
+  99: ["Thunderstorm + hail","⛈️"],
+};
+
+function wmoLabel(code) {
+  const entry = WMO[code] || ["Unknown", "🌡️"];
+  return { desc: entry[0], emoji: entry[1] };
+}
+
+/* ───── Low-level fetch ───── */
+async function fetchWeather({ lat, lng, dateStr, wantCurrent = false }) {
+  const base = "https://api.open-meteo.com/v1/forecast";
+  const params = new URLSearchParams({
+    latitude:  lat,
+    longitude: lng,
+    daily:     "temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum",
+    timezone:  "auto",
+    forecast_days: 16,
+  });
+  if (wantCurrent) {
+    params.append("current_weather", "true");
+  }
+  const res = await fetch(`${base}?${params}`);
+  if (!res.ok) throw new Error("Weather fetch failed");
+  const data = await res.json();
+
+  const daily = data.daily;
+  const idx   = daily.time.indexOf(dateStr);
+
+  let dayData = null;
+  if (idx !== -1) {
+    dayData = {
+      high:   Math.round(daily.temperature_2m_max[idx]),
+      low:    Math.round(daily.temperature_2m_min[idx]),
+      code:   daily.weathercode[idx],
+      rain:   daily.precipitation_sum[idx],
+    };
+  }
+
+  let current = null;
+  if (wantCurrent && data.current_weather) {
+    const cw = data.current_weather;
+    current = {
+      temp: Math.round(cw.temperature),
+      code: cw.weathercode,
+      wind: Math.round(cw.windspeed),
+    };
+  }
+
+  return { dayData, current, availableDates: daily.time };
+}
+
+/* ───── Render helpers ───── */
+function weatherHTML({ current = null, dayData = null, label = "", compact = false }) {
+  if (!current && !dayData) {
+    return `<div class="wx-wrap wx-empty">Weather unavailable</div>`;
+  }
+
+  if (compact) {
+    // Used in "Whole trip" list
+    const src   = dayData || current;
+    const { emoji, desc } = wmoLabel(src.code);
+    const temp  = dayData ? `${dayData.low}° – ${dayData.high}°` : `${current.temp}°`;
+    return `
+      <span class="wx-compact">
+        <span class="wx-emoji">${emoji}</span>
+        <span class="wx-temp-sm">${temp}C</span>
+        <span class="wx-desc-sm">${desc}</span>
+      </span>`;
+  }
+
+  let html = `<div class="wx-wrap">`;
+
+  if (current) {
+    const { emoji, desc } = wmoLabel(current.code);
+    html += `
+      <div class="wx-row">
+        <span class="wx-badge">Now</span>
+        <span class="wx-emoji">${emoji}</span>
+        <span class="wx-temp">${current.temp}°C</span>
+        <span class="wx-desc">${desc}</span>
+        <span class="wx-wind">💨 ${current.wind} km/h</span>
+      </div>`;
+  }
+
+  if (dayData) {
+    const { emoji, desc } = wmoLabel(dayData.code);
+    const badgeText = label || "Today";
+    html += `
+      <div class="wx-row">
+        <span class="wx-badge wx-badge-day">${badgeText}</span>
+        <span class="wx-emoji">${emoji}</span>
+        <span class="wx-temp">${dayData.low}° – ${dayData.high}°C</span>
+        <span class="wx-desc">${desc}</span>
+        ${dayData.rain > 0 ? `<span class="wx-rain">🌧 ${dayData.rain} mm</span>` : ""}
+      </div>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function weatherLoadingHTML() {
+  return `<div class="wx-wrap wx-loading">
+    <span class="wx-spinner"></span> Loading weather…
+  </div>`;
+}
+
+function weatherTooFarHTML(dateStr) {
+  return `<div class="wx-wrap wx-empty">
+    📅 Forecast for <strong>${dateStr}</strong> not yet available (beyond 16-day window).
+  </div>`;
+}
+
+/* ───── Inject weather into a panel ───── */
+async function injectWeather(containerId, stop, dateStr, opts = {}) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Remove any existing weather block first
+  const old = container.querySelector(".wx-section");
+  if (old) old.remove();
+
+  const section = document.createElement("div");
+  section.className = "wx-section";
+  section.innerHTML = weatherLoadingHTML();
+  container.appendChild(section);
+
+  const today    = todayStr();
+  const isToday  = dateStr === today;
+
+  try {
+    // Is the date within the 16-day forecast window?
+    // We'll find out after fetching (Open-Meteo returns available dates)
+    const { dayData, current, availableDates } = await fetchWeather({
+      lat: stop.lat,
+      lng: stop.lng,
+      dateStr,
+      wantCurrent: opts.wantCurrent || isToday,
+    });
+
+    const dateInWindow = availableDates.includes(dateStr);
+
+    if (!dateInWindow && !opts.wantCurrent) {
+      section.innerHTML = weatherTooFarHTML(dateStr);
+      return;
+    }
+
+    const label = isToday ? "Today" : `Arrival (${dateStr})`;
+    section.innerHTML = weatherHTML({
+      current:  opts.wantCurrent ? current : null,
+      dayData:  dateInWindow ? dayData : null,
+      label,
+    });
+  } catch (e) {
+    section.innerHTML = `<div class="wx-wrap wx-empty">⚠️ Weather unavailable</div>`;
+    console.warn("Weather error:", e);
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+ * PATCH the existing render functions
+ * We monkey-patch renderTodayPanel, updateSelectInfo, and
+ * renderAllPanel (whole-trip) to call weather after render.
+ * ──────────────────────────────────────────────────────────── */
+
+/* Save originals */
+const _renderTodayPanel    = renderTodayPanel;
+const _updateSelectInfo    = updateSelectInfo;
+
+/* Patch renderTodayPanel */
+window.renderTodayPanel = function(body) {
+  _renderTodayPanel(body);
+  const stop = stopForDate(todayStr());
+  if (!stop) return;
+  // Append weather below whatever the panel already rendered
+  const infoEl = body;
+  injectWeather_intoEl(infoEl, stop, todayStr(), { wantCurrent: true });
+};
+
+/* Patch updateSelectInfo */
+window.updateSelectInfo = function() {
+  _updateSelectInfo();
+  // After the original runs, find the stop for selectedDate and inject
+  const stop = stopForDate(selectedDate);
+  if (!stop) return;
+  const el = document.getElementById("selectInfo");
+  if (!el) return;
+  const isToday = selectedDate === todayStr();
+  injectWeather_intoEl(el, stop, selectedDate, { wantCurrent: isToday });
+};
+
+/* Helper: append wx-section into a plain element (not by ID) */
+async function injectWeather_intoEl(container, stop, dateStr, opts = {}) {
+  const old = container.querySelector(".wx-section");
+  if (old) old.remove();
+
+  const section = document.createElement("div");
+  section.className = "wx-section";
+  section.innerHTML = weatherLoadingHTML();
+  container.appendChild(section);
+
+  const today   = todayStr();
+  const isToday = dateStr === today;
+
+  try {
+    const { dayData, current, availableDates } = await fetchWeather({
+      lat: stop.lat,
+      lng: stop.lng,
+      dateStr,
+      wantCurrent: opts.wantCurrent || isToday,
+    });
+
+    const dateInWindow = availableDates.includes(dateStr);
+
+    if (!dateInWindow && !opts.wantCurrent) {
+      section.innerHTML = weatherTooFarHTML(dateStr);
+      return;
+    }
+
+    const label = isToday ? "Today" : `Arrival (${dateStr})`;
+    section.innerHTML = weatherHTML({
+      current:  (opts.wantCurrent || isToday) ? current : null,
+      dayData:  dateInWindow ? dayData : null,
+      label,
+    });
+  } catch {
+    section.innerHTML = `<div class="wx-wrap wx-empty">⚠️ Weather unavailable</div>`;
+  }
+}
+
+/* ───── "Whole trip" panel: add weather per stop ───── */
+/* We patch renderAllPanel which is called by setMode('all') */
+/* If your original code has renderAllPanel, patch it; otherwise hook setMode */
+const _origSetMode = setMode;
+window.setMode = function(m) {
+  _origSetMode(m);
+  if (m === "all") {
+    setTimeout(injectAllWeather, 50); // wait for DOM to render
+  }
+};
+
+async function injectAllWeather() {
+  // In "all" mode the ctrl body shows whole-trip info.
+  // We append a compact per-stop weather grid.
+  const body = document.getElementById("ctrlBody");
+  if (!body) return;
+
+  const old = body.querySelector(".wx-all-grid");
+  if (old) old.remove();
+
+  const grid = document.createElement("div");
+  grid.className = "wx-all-grid";
+  grid.innerHTML = `<div class="wx-all-title">Weather at each stop</div>` +
+    stops.map(s => `
+      <div class="wx-all-row" id="wx-all-${s.id}">
+        <span class="wx-all-name">${s.name}</span>
+        <span class="wx-spinner-sm"></span>
+      </div>
+    `).join("");
+  body.appendChild(grid);
+
+  for (const stop of stops) {
+    const el = document.getElementById(`wx-all-${stop.id}`);
+    if (!el) continue;
+    try {
+      // Show current weather if we're currently at this stop; else arrival day
+      const isCurrentStop = stopForDate(todayStr())?.id === stop.id;
+      const dateStr = isCurrentStop ? todayStr() : stop.start;
+
+      const { dayData, current, availableDates } = await fetchWeather({
+        lat: stop.lat,
+        lng: stop.lng,
+        dateStr,
+        wantCurrent: isCurrentStop,
+      });
+
+      const dateInWindow = availableDates.includes(dateStr);
+      const src = isCurrentStop ? current : (dateInWindow ? dayData : null);
+
+      if (!src) {
+        el.querySelector(".wx-spinner-sm").replaceWith(
+          Object.assign(document.createElement("span"), {
+            className: "wx-all-na",
+            textContent: dateInWindow ? "No data" : "Too far ahead",
+          })
+        );
+        continue;
+      }
+
+      const { emoji, desc } = wmoLabel(src.code);
+      const temp = isCurrentStop
+        ? `${src.temp}°C`
+        : `${dayData.low}°–${dayData.high}°C`;
+
+      el.querySelector(".wx-spinner-sm").replaceWith(
+        Object.assign(document.createElement("span"), {
+          className: "wx-all-data",
+          innerHTML: `${emoji} <b>${temp}</b> <span>${desc}</span>`,
+        })
+      );
+    } catch {
+      const sp = el.querySelector(".wx-spinner-sm");
+      if (sp) sp.replaceWith(
+        Object.assign(document.createElement("span"), {
+          className: "wx-all-na",
+          textContent: "Unavailable",
+        })
+      );
+    }
+  }
+}
+
 </body>
 </html>
