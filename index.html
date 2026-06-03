@@ -373,6 +373,13 @@
 .wx-temp-sm { font-weight: 600; color: var(--ink); }
 .wx-desc-sm { font-size: 11px; }
 
+/* Hide weather when Whole Trip tab is active */
+#tab-all.active ~ * .wx-section,
+#tab-all.active ~ * .wx-all-grid,
+.wx-all-grid {
+  display: none !important;
+}
+
   </style>
 </head>
 <body>
