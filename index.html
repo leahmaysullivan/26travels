@@ -538,9 +538,9 @@
   // Fallback embedded species (mirrors speciesList.json)
   const EMBEDDED_SPECIES = {
     species: [
-      { id: 100, name: "Austral Thrush",         dateSpotted: "2026-05-23", location: "Sanctuario el Cañi",        description: null,                                          stopId: "loslagos" },
-      { id: 200, name: "Magellanic Woodpecker",   dateSpotted: "2026-05-27", location: "Conguillio National Park",  description: "Commonly called Carpenteros Negro/Gigante",   stopId: "loslagos" },
-      { id: 300, name: "Andean Condor",           dateSpotted: "2026-05-27", location: "Conguillio National Park",  description: null,                                          stopId: "loslagos" }
+      { id: 100, name: "Austral Thrush",       dateSpotted: "2026-05-23", location: "Sanctuario el Cañi",       description: null },
+      { id: 200, name: "Magellanic Woodpecker", dateSpotted: "2026-05-27", location: "Conguillio National Park", description: "Commonly called Carpenteros Negro/Gigante" },
+      { id: 300, name: "Andean Condor",         dateSpotted: "2026-05-27", location: "Conguillio National Park", description: null }
     ]
   };
 
@@ -656,23 +656,31 @@
    ***********************************************************************/
 
   /**
-   * Return species belonging to a specific stop (by stopId).
-   * Species are sorted by dateSpotted ascending.
+   * Return the effective end date string for a stop.
+   * If the stop has no end date, use the day before the next stop starts,
+   * or far future if it is the last stop.
    */
-  function speciesForStop(stopId) {
-    return allSpecies
-      .filter(sp => sp.stopId === stopId)
-      .sort((a, b) => a.dateSpotted.localeCompare(b.dateSpotted));
+  function stopEffectiveEnd(stop) {
+    if (stop.end) return stop.end;
+    const idx = stops.findIndex(s => s.id === stop.id);
+    const next = stops[idx + 1];
+    if (next) {
+      const d = parseDateUTC(next.start);
+      d.setUTCDate(d.getUTCDate() - 1);
+      return toYMD(d);
+    }
+    return "9999-12-31";
   }
 
   /**
-   * Return all species spotted up to and including today's date
-   * (or all if whole-trip mode). For "whole trip" pass null.
+   * Return species whose dateSpotted falls within a stop's date range.
+   * Species are sorted by dateSpotted ascending.
    */
-  function speciesUpToDate(dateStr) {
-    if (!dateStr) return [...allSpecies].sort((a,b) => a.dateSpotted.localeCompare(b.dateSpotted));
+  function speciesForStop(stop) {
+    const start = stop.start;
+    const end   = stopEffectiveEnd(stop);
     return allSpecies
-      .filter(sp => sp.dateSpotted <= dateStr)
+      .filter(sp => sp.dateSpotted >= start && sp.dateSpotted <= end)
       .sort((a, b) => a.dateSpotted.localeCompare(b.dateSpotted));
   }
 
@@ -716,7 +724,7 @@
   /***********************************************************************
    * SPECIES MODAL
    ***********************************************************************/
-  function openSpeciesModal(stopId, stopName, isWholeTrip) {
+  function openSpeciesModal(stop, stopName, isWholeTrip) {
     const overlay = document.getElementById("speciesModalOverlay");
     const title   = document.getElementById("speciesModalTitle");
     const subtitle = document.getElementById("speciesModalSubtitle");
@@ -735,11 +743,12 @@
         // Group by stopId, preserve stop order
         const grouped = new Map();
         for (const stop of stops) {
-          const sps = speciesForStop(stop.id);
+          const sps = speciesForStop(stop);
           if (sps.length) grouped.set(stop, sps);
         }
-        // Also catch any species whose stopId doesn't match a known stop
-        const unknownSps = allSpecies.filter(sp => !stops.find(st => st.id === sp.stopId))
+        // Also catch any species whose dateSpotted doesn't fall within any known stop's range
+        const matchedIds = new Set([...grouped.values()].flat().map(sp => sp.id));
+        const unknownSps = allSpecies.filter(sp => !matchedIds.has(sp.id))
                                      .sort((a,b) => a.dateSpotted.localeCompare(b.dateSpotted));
 
         grouped.forEach((sps, stop) => {
@@ -769,7 +778,7 @@
 
     } else {
       // Single stop
-      const sps = speciesForStop(stopId);
+      const sps = speciesForStop(stop);
       title.innerHTML = `${esc(stopName)} <span class="species-count-badge">${sps.length}</span>`;
       subtitle.textContent = sps.length
         ? `${sps.length} species recorded at this stop`
@@ -928,7 +937,7 @@
   function buildSpeciesBtn(stop, isWholeTrip) {
     const count = isWholeTrip
       ? allSpecies.length
-      : speciesForStop(stop ? stop.id : null).length;
+      : speciesForStop(stop).length;
 
     const btn = document.createElement("button");
     btn.className = "species-btn";
@@ -945,7 +954,7 @@
       if (isWholeTrip) {
         openSpeciesModal(null, null, true);
       } else {
-        openSpeciesModal(stop.id, stop.name, false);
+        openSpeciesModal(stop, stop.name, false);
       }
     });
     return btn;
