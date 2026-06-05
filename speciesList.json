@@ -5,24 +5,21 @@
       "name": "Austral Thrush",
       "dateSpotted": "2026-05-23",
       "location": "Sanctuario el Cañi",
-      "description": null,
-      "stopId": "loslagos"
+      "description": null
     },
     {
       "id": 200,
       "name": "Magellanic Woodpecker",
       "dateSpotted": "2026-05-27",
       "location": "Conguillio National Park",
-      "description": "Commonly called Carpenteros Negro/Gigante",
-      "stopId": "loslagos"
+      "description": "Commonly called Carpenteros Negro/Gigante"
     },
     {
       "id": 300,
       "name": "Andean Condor",
       "dateSpotted": "2026-05-27",
       "location": "Conguillio National Park",
-      "description": null,
-      "stopId": "loslagos"
+      "description": null
     }
   ]
 }
