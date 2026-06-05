@@ -81,7 +81,7 @@
 
     /* ── Map ── */
     main { position: relative; overflow: hidden; height: 100dvh; }
-#map { height: 100%; width: 100%; }
+    #map { height: 100%; width: 100%; }
 
     /* ── Controls ── */
     .controls {
@@ -224,162 +224,244 @@
 
     .leaflet-popup-content-wrapper { border-radius: 12px !important; font-family: var(--sans) !important; }
 
-/* ══════════════════════════════════════════
-   WEATHER MODULE CSS
-   Paste this block inside your existing <style> tag
-   ══════════════════════════════════════════ */
+    /* ══ WEATHER MODULE CSS ══ */
+    .wx-section { margin-top: 12px; border-top: 1px solid var(--ink3); padding-top: 10px; }
+    .wx-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .wx-wrap.wx-loading, .wx-wrap.wx-empty { font-size: 12px; color: var(--ink2); font-style: italic; }
+    .wx-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 13px; }
+    .wx-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; background: rgba(26,26,46,0.08); color: var(--ink2); border-radius: 6px; padding: 2px 7px; flex-shrink: 0; }
+    .wx-badge-day { background: rgba(200,105,42,0.1); color: var(--accent); }
+    .wx-emoji { font-size: 18px; line-height: 1; }
+    .wx-temp { font-weight: 600; color: var(--ink); }
+    .wx-desc { color: var(--ink2); }
+    .wx-wind { font-size: 11px; color: var(--ink2); margin-left: auto; }
+    .wx-rain { font-size: 11px; color: #2a72c8; }
+    .wx-spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid var(--ink3); border-top-color: var(--accent); border-radius: 50%; animation: wx-spin 0.7s linear infinite; margin-right: 6px; vertical-align: middle; }
+    .wx-spinner-sm { display: inline-block; width: 10px; height: 10px; border: 1.5px solid var(--ink3); border-top-color: var(--accent); border-radius: 50%; animation: wx-spin 0.7s linear infinite; vertical-align: middle; }
+    @keyframes wx-spin { to { transform: rotate(360deg); } }
+    .wx-all-grid { margin-top: 14px; border-top: 1px solid var(--ink3); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+    .wx-all-title { font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink2); margin-bottom: 4px; }
+    .wx-all-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; }
+    .wx-all-name { font-weight: 600; color: var(--ink); flex-shrink: 0; }
+    .wx-all-data { color: var(--ink2); text-align: right; }
+    .wx-all-data b { color: var(--ink); font-weight: 600; }
+    .wx-all-data span { font-size: 11px; margin-left: 4px; }
+    .wx-all-na { font-size: 11px; color: var(--ink2); font-style: italic; }
+    .wx-compact { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--ink2); margin-top: 3px; }
+    .wx-temp-sm { font-weight: 600; color: var(--ink); }
+    .wx-desc-sm { font-size: 11px; }
+    #tab-all.active ~ * .wx-section, #tab-all.active ~ * .wx-all-grid, .wx-all-grid { display: none !important; }
 
-/* ── Weather section wrapper ── */
-.wx-section {
-  margin-top: 12px;
-  border-top: 1px solid var(--ink3);
-  padding-top: 10px;
-}
+    /* ══ SPECIES LIST MODULE CSS ══ */
 
-.wx-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+    /* Species button — sits inline in the info header row */
+    .species-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(200,105,42,0.35);
+      background: rgba(200,105,42,0.08);
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .species-btn:hover {
+      background: rgba(200,105,42,0.16);
+      border-color: rgba(200,105,42,0.55);
+    }
+    .species-btn svg {
+      flex-shrink: 0;
+    }
+    .species-btn-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
 
-.wx-wrap.wx-loading,
-.wx-wrap.wx-empty {
-  font-size: 12px;
-  color: var(--ink2);
-  font-style: italic;
-}
+    /* Species modal overlay */
+    .species-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 4000;
+      display: none;
+      place-items: center;
+      background: rgba(26,26,46,0.72);
+      backdrop-filter: blur(6px);
+      padding: 16px;
+    }
+    .species-modal-overlay.open {
+      display: grid;
+    }
 
-/* ── Individual weather row (Now / Arrival day) ── */
-.wx-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  font-size: 13px;
-}
+    /* Modal card */
+    .species-modal {
+      width: min(480px, 100%);
+      max-height: min(80vh, 640px);
+      background: var(--panel-bg);
+      border-radius: 22px;
+      box-shadow: 0 24px 64px rgba(26,26,46,0.28);
+      border: 1px solid var(--ink3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: species-in 0.22s cubic-bezier(0.34,1.3,0.64,1) both;
+    }
+    @keyframes species-in {
+      from { opacity: 0; transform: scale(0.93) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
 
-.wx-badge {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  background: rgba(26,26,46,0.08);
-  color: var(--ink2);
-  border-radius: 6px;
-  padding: 2px 7px;
-  flex-shrink: 0;
-}
+    /* Modal header */
+    .species-modal-header {
+      padding: 20px 20px 14px;
+      border-bottom: 1px solid var(--ink3);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .species-modal-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--ink);
+      margin: 0 0 2px;
+      line-height: 1.2;
+    }
+    .species-modal-subtitle {
+      font-size: 12px;
+      color: var(--ink2);
+      margin: 0;
+    }
+    .species-close-btn {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--ink3);
+      background: white;
+      color: var(--ink2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.12s, color 0.12s;
+      line-height: 1;
+    }
+    .species-close-btn:hover { background: var(--ink); color: white; }
 
-.wx-badge-day {
-  background: rgba(200,105,42,0.1);
-  color: var(--accent);
-}
+    /* Modal body — scrollable */
+    .species-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink3) transparent;
+    }
 
-.wx-emoji  { font-size: 18px; line-height: 1; }
-.wx-temp   { font-weight: 600; color: var(--ink); }
-.wx-desc   { color: var(--ink2); }
-.wx-wind   { font-size: 11px; color: var(--ink2); margin-left: auto; }
-.wx-rain   { font-size: 11px; color: #2a72c8; }
+    /* Empty state */
+    .species-empty {
+      text-align: center;
+      padding: 32px 16px;
+      color: var(--ink2);
+      font-size: 13px;
+      font-style: italic;
+    }
+    .species-empty-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+      display: block;
+      opacity: 0.5;
+    }
 
-/* ── Spinner ── */
-.wx-spinner {
-  display: inline-block;
-  width: 12px; height: 12px;
-  border: 2px solid var(--ink3);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: wx-spin 0.7s linear infinite;
-  margin-right: 6px;
-  vertical-align: middle;
-}
+    /* Count badge in header */
+    .species-count-badge {
+      display: inline-block;
+      background: rgba(200,105,42,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 2px 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
 
-.wx-spinner-sm {
-  display: inline-block;
-  width: 10px; height: 10px;
-  border: 1.5px solid var(--ink3);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: wx-spin 0.7s linear infinite;
-  vertical-align: middle;
-}
+    /* Individual species card */
+    .species-card {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--ink3);
+      background: white;
+      margin-bottom: 8px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .species-card:last-child { margin-bottom: 0; }
+    .species-card:hover {
+      border-color: rgba(200,105,42,0.3);
+      box-shadow: 0 2px 12px rgba(200,105,42,0.08);
+    }
 
-@keyframes wx-spin {
-  to { transform: rotate(360deg); }
-}
+    .species-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .species-card-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ink);
+      font-style: italic;
+    }
+    .species-card-date {
+      font-size: 11px;
+      color: var(--ink2);
+      white-space: nowrap;
+      flex-shrink: 0;
+      background: rgba(26,26,46,0.06);
+      border-radius: 6px;
+      padding: 2px 7px;
+    }
+    .species-card-location {
+      font-size: 12px;
+      color: var(--ink2);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .species-card-desc {
+      font-size: 12px;
+      color: var(--ink2);
+      line-height: 1.45;
+      border-top: 1px solid var(--ink3);
+      padding-top: 6px;
+      margin-top: 4px;
+    }
 
-/* ── "Whole trip" weather grid ── */
-.wx-all-grid {
-  margin-top: 14px;
-  border-top: 1px solid var(--ink3);
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.wx-all-title {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--ink2);
-  margin-bottom: 4px;
-}
-
-.wx-all-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 13px;
-}
-
-.wx-all-name {
-  font-weight: 600;
-  color: var(--ink);
-  flex-shrink: 0;
-}
-
-.wx-all-data {
-  color: var(--ink2);
-  text-align: right;
-}
-
-.wx-all-data b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.wx-all-data span {
-  font-size: 11px;
-  margin-left: 4px;
-}
-
-.wx-all-na {
-  font-size: 11px;
-  color: var(--ink2);
-  font-style: italic;
-}
-
-/* ── Compact inline weather (sidebar) ── */
-.wx-compact {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  color: var(--ink2);
-  margin-top: 3px;
-}
-.wx-temp-sm { font-weight: 600; color: var(--ink); }
-.wx-desc-sm { font-size: 11px; }
-
-/* Hide weather when Whole Trip tab is active */
-#tab-all.active ~ * .wx-section,
-#tab-all.active ~ * .wx-all-grid,
-.wx-all-grid {
-  display: none !important;
-}
-
+    /* Stop group header (whole trip view) */
+    .species-stop-group {
+      margin-bottom: 16px;
+    }
+    .species-stop-group-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      margin-bottom: 8px;
+      padding-left: 2px;
+    }
   </style>
 </head>
 <body>
@@ -393,6 +475,20 @@
       <button id="gateBtn">Unlock</button>
     </div>
     <div class="gate-error" id="gateError">Incorrect passcode.</div>
+  </div>
+</div>
+
+<!-- ══ SPECIES MODAL ══ -->
+<div class="species-modal-overlay" id="speciesModalOverlay">
+  <div class="species-modal" role="dialog" aria-modal="true" aria-labelledby="speciesModalTitle">
+    <div class="species-modal-header">
+      <div>
+        <p class="species-modal-title" id="speciesModalTitle">Species List</p>
+        <p class="species-modal-subtitle" id="speciesModalSubtitle"></p>
+      </div>
+      <button class="species-close-btn" id="speciesCloseBtn" aria-label="Close">✕</button>
+    </div>
+    <div class="species-modal-body" id="speciesModalBody"></div>
   </div>
 </div>
 
@@ -426,6 +522,7 @@
    ***********************************************************************/
   const PASSCODE = "";
   const ITINERARY_JSON_URL = "itinerary.json";
+  const SPECIES_JSON_URL   = "speciesList.json";
 
   const EMBEDDED_ITINERARY = {
     title: "Leah & Co. — 2026 Adventure",
@@ -435,6 +532,15 @@
       { id: "lisbon",    name: "Lisbon",    country: "Portugal", start: "2026-03-15", end: "2026-03-22", lat: 38.7169,  lng: -9.1399,  note: "Pastéis de nata every morning." },
       { id: "seville",   name: "Seville",   country: "Spain",    start: "2026-03-23", end: "2026-03-30", lat: 37.3891,  lng: -5.9845,  note: "Flamenco and orange trees." },
       { id: "marrakech", name: "Marrakech", country: "Morocco",  start: "2026-03-31", end: null,          lat: 31.6295,  lng: -7.9811,  note: "The medina awaits." }
+    ]
+  };
+
+  // Fallback embedded species (mirrors speciesList.json)
+  const EMBEDDED_SPECIES = {
+    species: [
+      { id: 100, name: "Austral Thrush",         dateSpotted: "2026-05-23", location: "Sanctuario el Cañi",        description: null,                                          stopId: "loslagos" },
+      { id: 200, name: "Magellanic Woodpecker",   dateSpotted: "2026-05-27", location: "Conguillio National Park",  description: "Commonly called Carpenteros Negro/Gigante",   stopId: "loslagos" },
+      { id: 300, name: "Andean Condor",           dateSpotted: "2026-05-27", location: "Conguillio National Park",  description: null,                                          stopId: "loslagos" }
     ]
   };
 
@@ -457,6 +563,10 @@
     if (!s) return "onwards";
     return parseDateUTC(s).toLocaleDateString("en-GB", { day:"numeric", month:"short", year:"numeric", timeZone:"UTC" });
   }
+  function fmtDateShort(s) {
+    // e.g. "27 May"
+    return parseDateUTC(s).toLocaleDateString("en-GB", { day:"numeric", month:"short", timeZone:"UTC" });
+  }
   function fmtRange(s, e) {
     return e ? `${fmtDate(s)} → ${fmtDate(e)}` : `From ${fmtDate(s)}`;
   }
@@ -464,8 +574,6 @@
     return String(str||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
   }
 
-  // Find which stop covers a date.
-  // null end = covered until next stop's start date (exclusive), or indefinitely if last.
   function stopForDate(dateStr) {
     const t = parseDateUTC(dateStr).getTime();
     for (let i = 0; i < stops.length; i++) {
@@ -494,7 +602,6 @@
     const first = stops[0];
     const last  = stops[stops.length - 1];
     const minD  = parseDateUTC(first.start);
-    // If last stop has no end, treat as at least a year from its start
     const maxD  = last.end
       ? parseDateUTC(last.end)
       : new Date(parseDateUTC(last.start).getTime() + 365*24*60*60*1000);
@@ -513,6 +620,7 @@
    ***********************************************************************/
   let itinerary = null;
   let stops = [];
+  let allSpecies = [];
   let mode = "today";
   let selectedDate = todayStr();
   let map = null;
@@ -520,7 +628,7 @@
   let routeLine = null;
 
   /***********************************************************************
-   * DATA
+   * DATA LOADING
    ***********************************************************************/
   async function loadItinerary() {
     try {
@@ -531,6 +639,161 @@
       if (!json || !Array.isArray(json.stops)) throw 0;
       return json;
     } catch { return EMBEDDED_ITINERARY; }
+  }
+
+  async function loadSpecies() {
+    try {
+      const res = await fetch(SPECIES_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw 0;
+      const json = await res.json();
+      if (!json || !Array.isArray(json.species)) throw 0;
+      return json.species;
+    } catch { return EMBEDDED_SPECIES.species; }
+  }
+
+  /***********************************************************************
+   * SPECIES — helpers
+   ***********************************************************************/
+
+  /**
+   * Return species belonging to a specific stop (by stopId).
+   * Species are sorted by dateSpotted ascending.
+   */
+  function speciesForStop(stopId) {
+    return allSpecies
+      .filter(sp => sp.stopId === stopId)
+      .sort((a, b) => a.dateSpotted.localeCompare(b.dateSpotted));
+  }
+
+  /**
+   * Return all species spotted up to and including today's date
+   * (or all if whole-trip mode). For "whole trip" pass null.
+   */
+  function speciesUpToDate(dateStr) {
+    if (!dateStr) return [...allSpecies].sort((a,b) => a.dateSpotted.localeCompare(b.dateSpotted));
+    return allSpecies
+      .filter(sp => sp.dateSpotted <= dateStr)
+      .sort((a, b) => a.dateSpotted.localeCompare(b.dateSpotted));
+  }
+
+  /** Render a single species card element */
+  function buildSpeciesCard(sp) {
+    const card = document.createElement("div");
+    card.className = "species-card";
+
+    const top = document.createElement("div");
+    top.className = "species-card-top";
+
+    const name = document.createElement("span");
+    name.className = "species-card-name";
+    name.textContent = sp.name;
+
+    const dateBadge = document.createElement("span");
+    dateBadge.className = "species-card-date";
+    dateBadge.textContent = fmtDateShort(sp.dateSpotted);
+
+    top.appendChild(name);
+    top.appendChild(dateBadge);
+    card.appendChild(top);
+
+    if (sp.location) {
+      const loc = document.createElement("div");
+      loc.className = "species-card-location";
+      loc.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${esc(sp.location)}`;
+      card.appendChild(loc);
+    }
+
+    if (sp.description) {
+      const desc = document.createElement("div");
+      desc.className = "species-card-desc";
+      desc.textContent = sp.description;
+      card.appendChild(desc);
+    }
+
+    return card;
+  }
+
+  /***********************************************************************
+   * SPECIES MODAL
+   ***********************************************************************/
+  function openSpeciesModal(stopId, stopName, isWholeTrip) {
+    const overlay = document.getElementById("speciesModalOverlay");
+    const title   = document.getElementById("speciesModalTitle");
+    const subtitle = document.getElementById("speciesModalSubtitle");
+    const body    = document.getElementById("speciesModalBody");
+
+    body.innerHTML = "";
+
+    if (isWholeTrip) {
+      // Group by stop
+      title.innerHTML = `Whole Trip Species <span class="species-count-badge">${allSpecies.length}</span>`;
+      subtitle.textContent = "All species spotted so far";
+
+      if (!allSpecies.length) {
+        body.appendChild(emptyState());
+      } else {
+        // Group by stopId, preserve stop order
+        const grouped = new Map();
+        for (const stop of stops) {
+          const sps = speciesForStop(stop.id);
+          if (sps.length) grouped.set(stop, sps);
+        }
+        // Also catch any species whose stopId doesn't match a known stop
+        const unknownSps = allSpecies.filter(sp => !stops.find(st => st.id === sp.stopId))
+                                     .sort((a,b) => a.dateSpotted.localeCompare(b.dateSpotted));
+
+        grouped.forEach((sps, stop) => {
+          const group = document.createElement("div");
+          group.className = "species-stop-group";
+
+          const groupTitle = document.createElement("div");
+          groupTitle.className = "species-stop-group-title";
+          groupTitle.textContent = `${stop.name}${stop.country ? `, ${stop.country}` : ""} — ${sps.length} species`;
+          group.appendChild(groupTitle);
+
+          sps.forEach(sp => group.appendChild(buildSpeciesCard(sp)));
+          body.appendChild(group);
+        });
+
+        if (unknownSps.length) {
+          const group = document.createElement("div");
+          group.className = "species-stop-group";
+          const groupTitle = document.createElement("div");
+          groupTitle.className = "species-stop-group-title";
+          groupTitle.textContent = `Other — ${unknownSps.length} species`;
+          group.appendChild(groupTitle);
+          unknownSps.forEach(sp => group.appendChild(buildSpeciesCard(sp)));
+          body.appendChild(group);
+        }
+      }
+
+    } else {
+      // Single stop
+      const sps = speciesForStop(stopId);
+      title.innerHTML = `${esc(stopName)} <span class="species-count-badge">${sps.length}</span>`;
+      subtitle.textContent = sps.length
+        ? `${sps.length} species recorded at this stop`
+        : "No species recorded yet";
+
+      if (!sps.length) {
+        body.appendChild(emptyState());
+      } else {
+        sps.forEach(sp => body.appendChild(buildSpeciesCard(sp)));
+      }
+    }
+
+    overlay.classList.add("open");
+  }
+
+  function emptyState() {
+    const el = document.createElement("div");
+    el.className = "species-empty";
+    el.innerHTML = `<span class="species-empty-icon">🔭</span>No species recorded here yet.`;
+    return el;
+  }
+
+  function closeSpeciesModal() {
+    document.getElementById("speciesModalOverlay").classList.remove("open");
   }
 
   /***********************************************************************
@@ -647,521 +910,228 @@
         setMode("select");
       });
 
-      el.appendChild(div);
       if (i < stops.length - 1) {
-        const hr = document.createElement("div");
-        hr.className = "stop-divider";
-        el.appendChild(hr);
+        const divider = document.createElement("div");
+        divider.className = "stop-divider";
+        el.appendChild(div);
+        el.appendChild(divider);
+      } else {
+        el.appendChild(div);
       }
     });
   }
 
   /***********************************************************************
-   * PANELS
+   * CONTROL PANEL RENDERING
    ***********************************************************************/
-  function renderTodayPanel(body) {
-    const stop = stopForDate(todayStr());
-    const next = nextStopAfter(stop);
+  /** Build a species button for a given stop (or whole-trip if stopId is null) */
+  function buildSpeciesBtn(stop, isWholeTrip) {
+    const count = isWholeTrip
+      ? allSpecies.length
+      : speciesForStop(stop ? stop.id : null).length;
 
-    if (!stop) {
-      body.innerHTML = `<p class="no-match">Today is outside the trip dates.<br>Try <em>Select date</em> or <em>Whole trip</em>.</p>`;
-      renderTimeline(null);
-      return;
-    }
+    const btn = document.createElement("button");
+    btn.className = "species-btn";
+    btn.title = "View species list";
+    btn.innerHTML = `
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+      Species${count > 0 ? ` (${count})` : ""}`;
 
-    let html = `
-      <div class="info-location">${esc(stop.name)}</div>
-      <div class="info-meta">${stop.country ? esc(stop.country)+" &middot; " : ""}${fmtRange(stop.start, stop.end)}</div>
-      ${stop.note ? `<div class="info-note">${esc(stop.note)}</div>` : ""}
-    `;
-    if (next) {
-      html += `
-        <div class="next-block">
-          <div class="next-label">Next stop</div>
-          <div class="next-name">${esc(next.name)}</div>
-          <div class="next-dates">${next.country ? esc(next.country)+" &middot; " : ""}From ${fmtDate(next.start)}</div>
-        </div>
-      `;
-    }
-    body.innerHTML = html;
-    renderTimeline(stop.id);
-    focusStop(stop);
-  }
-
-  function renderSelectPanel(body) {
-    const b = tripBounds();
-    const minStr = b ? toYMD(b.min) : "";
-    const maxStr = b ? toYMD(b.max) : "";
-
-    body.innerHTML = `
-      <div class="date-nav">
-        <button class="arrow-btn" id="prevDay">&#8249;</button>
-        <input type="date" id="datePicker"
-               value="${esc(selectedDate)}"
-               min="${esc(minStr)}"
-               max="${esc(maxStr)}" />
-        <button class="arrow-btn" id="nextDay">&#8250;</button>
-      </div>
-      <div id="selectInfo"></div>
-    `;
-
-    document.getElementById("prevDay").addEventListener("click", () => shiftDay(-1));
-    document.getElementById("nextDay").addEventListener("click", () => shiftDay(+1));
-    document.getElementById("datePicker").addEventListener("change", e => {
-      selectedDate = e.target.value;
-      updateSelectInfo();
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isWholeTrip) {
+        openSpeciesModal(null, null, true);
+      } else {
+        openSpeciesModal(stop.id, stop.name, false);
+      }
     });
-
-    updateSelectInfo();
+    return btn;
   }
 
-  function updateSelectInfo() {
-    const el = document.getElementById("selectInfo");
-    if (!el) return;
-    const stop = stopForDate(selectedDate);
+  function renderCtrl() {
+    const body = document.getElementById("ctrlBody");
+    body.innerHTML = "";
 
-    if (!stop) {
-      el.innerHTML = `<p class="no-match">No stop found for <strong>${esc(selectedDate)}</strong>.<br>Try a different date.</p>`;
+    // Update tabs
+    document.getElementById("tab-today").classList.toggle("active", mode === "today");
+    document.getElementById("tab-select").classList.toggle("active", mode === "select");
+    document.getElementById("tab-all").classList.toggle("active", mode === "all");
+
+    if (mode === "all") {
+      renderAll(body);
       renderTimeline(null);
+      focusAll();
       return;
     }
 
-    el.innerHTML = `
-      <div class="info-location">${esc(stop.name)}</div>
-      <div class="info-meta">${stop.country ? esc(stop.country)+" &middot; " : ""}${fmtRange(stop.start, stop.end)}</div>
-      ${stop.note ? `<div class="info-note">${esc(stop.note)}</div>` : ""}
-    `;
-    renderTimeline(stop.id);
-    focusStop(stop);
-  }
+    const dateToUse = mode === "today" ? todayStr() : selectedDate;
+    const stop = stopForDate(dateToUse);
 
-  function shiftDay(delta) {
-    if (!selectedDate) return;
-    const d = parseDateUTC(selectedDate);
-    d.setUTCDate(d.getUTCDate() + delta);
-    const b = tripBounds();
-    if (b) {
-      const t = Math.max(b.min.getTime(), Math.min(b.max.getTime(), d.getTime()));
-      selectedDate = toYMD(new Date(t));
-    } else {
-      selectedDate = toYMD(d);
+    if (mode === "select") {
+      const b = tripBounds();
+      const nav = document.createElement("div");
+      nav.className = "date-nav";
+
+      const prev = document.createElement("button");
+      prev.className = "arrow-btn";
+      prev.textContent = "‹";
+      prev.onclick = () => {
+        const d = parseDateUTC(selectedDate);
+        d.setUTCDate(d.getUTCDate() - 1);
+        selectedDate = toYMD(d);
+        renderCtrl();
+      };
+
+      const inp = document.createElement("input");
+      inp.type = "date";
+      inp.value = selectedDate;
+      if (b) {
+        inp.min = toYMD(b.min);
+        inp.max = toYMD(b.max);
+      }
+      inp.oninput = () => { if (inp.value) { selectedDate = inp.value; renderCtrl(); } };
+
+      const next = document.createElement("button");
+      next.className = "arrow-btn";
+      next.textContent = "›";
+      next.onclick = () => {
+        const d = parseDateUTC(selectedDate);
+        d.setUTCDate(d.getUTCDate() + 1);
+        selectedDate = toYMD(d);
+        renderCtrl();
+      };
+
+      nav.appendChild(prev);
+      nav.appendChild(inp);
+      nav.appendChild(next);
+      body.appendChild(nav);
     }
-    const picker = document.getElementById("datePicker");
-    if (picker) picker.value = selectedDate;
-    updateSelectInfo();
+
+    if (stop) {
+      // Location row with species button
+      const headerWrap = document.createElement("div");
+      headerWrap.className = "species-btn-wrap";
+
+      const locTitle = document.createElement("p");
+      locTitle.className = "info-location";
+      locTitle.style.margin = "0";
+      locTitle.textContent = `${stop.name}${stop.country ? `, ${stop.country}` : ""}`;
+
+      const spBtn = buildSpeciesBtn(stop, false);
+
+      headerWrap.appendChild(locTitle);
+      headerWrap.appendChild(spBtn);
+      body.appendChild(headerWrap);
+
+      const meta = document.createElement("p");
+      meta.className = "info-meta";
+      meta.textContent = fmtRange(stop.start, stop.end);
+      body.appendChild(meta);
+
+      if (stop.note) {
+        const note = document.createElement("p");
+        note.className = "info-note";
+        note.textContent = stop.note;
+        body.appendChild(note);
+      }
+
+      const next = nextStopAfter(stop);
+      if (next) {
+        const nb = document.createElement("div");
+        nb.className = "next-block";
+        nb.innerHTML = `<div class="next-label">Next stop</div>
+          <div class="next-name">${esc(next.name)}${next.country ? `, <span style="font-weight:400;">${esc(next.country)}</span>` : ""}</div>
+          <div class="next-dates">${fmtRange(next.start, next.end)}</div>`;
+        body.appendChild(nb);
+      }
+
+      focusStop(stop);
+      renderTimeline(stop.id);
+    } else {
+      const p = document.createElement("p");
+      p.className = "no-match";
+      p.textContent = "No stop scheduled for this date.";
+      body.appendChild(p);
+      renderTimeline(null);
+    }
   }
 
-  function renderAllPanel(body) {
+  function renderAll(body) {
+    const info = document.createElement("div");
+    info.className = "whole-info";
+
+    const n = stops.length;
+    const countries = [...new Set(stops.map(s => s.country).filter(Boolean))];
     const first = stops[0];
     const last  = stops[stops.length - 1];
-    const count = stops.length;
-    body.innerHTML = `
-      <div class="whole-info">
-        <strong>${count} stop${count !== 1 ? "s" : ""}</strong> across the full journey.
-        ${first ? `<br><span>From ${fmtDate(first.start)}${last && last.end ? " to " + fmtDate(last.end) : ""}</span>` : ""}
-      </div>
+    info.innerHTML = `
+      <strong>${n} stops</strong> across <strong>${countries.length || "–"}</strong> countr${countries.length === 1 ? "y" : "ies"}.<br>
+      From <strong>${fmtDate(first?.start)}</strong>${last?.end ? ` to <strong>${fmtDate(last.end)}</strong>` : ""}.
     `;
-    renderTimeline(null);
-    focusAll();
+    body.appendChild(info);
+
+    // Whole-trip species button
+    const spBtnWrap = document.createElement("div");
+    spBtnWrap.style.cssText = "margin-top:12px; display:flex; justify-content:flex-end;";
+    spBtnWrap.appendChild(buildSpeciesBtn(null, true));
+    body.appendChild(spBtnWrap);
   }
 
   /***********************************************************************
    * MODE
    ***********************************************************************/
-  function setMode(newMode) {
-    mode = newMode;
-    ["today","select","all"].forEach(m => {
-      document.getElementById(`tab-${m}`).classList.toggle("active", mode === m);
-    });
-    const body = document.getElementById("ctrlBody");
-    if (mode === "today")        renderTodayPanel(body);
-    else if (mode === "select")  renderSelectPanel(body);
-    else                         renderAllPanel(body);
+  function setMode(m) {
+    mode = m;
+    if (m === "today") selectedDate = todayStr();
+    renderCtrl();
   }
 
   /***********************************************************************
    * INIT
    ***********************************************************************/
-  async function main() {
+  async function init() {
     setupGate();
-    itinerary = await loadItinerary();
-    stops = [...(itinerary.stops || [])].sort((a, b) => a.start.localeCompare(b.start));
-
-    document.getElementById("tripTitle").textContent    = itinerary.title    || "Our Travels";
-    document.getElementById("tripSubtitle").textContent = itinerary.subtitle || "";
-
     initMap();
+
+    const [it, species] = await Promise.all([loadItinerary(), loadSpecies()]);
+    itinerary  = it;
+    stops      = it.stops;
+    allSpecies = species;
+
+    document.getElementById("tripTitle").textContent    = it.title    || "Our Travels";
+    document.getElementById("tripSubtitle").textContent = it.subtitle || "";
+
     buildPins();
 
-    // Default mode: Today if within trip, otherwise Select (defaulting to first stop)
+    // Determine initial mode
     if (todayInTrip()) {
       mode = "today";
     } else {
-      mode = "select";
-      selectedDate = stops[0]?.start || todayStr();
-    }
-
-    setMode(mode);
-  }
-
-  main();
-</script>
-
-<script>
-/**
- * WEATHER MODULE — drop this <script> block just before </body>
- * in your Travel Map HTML, right after the existing <script> closes.
- *
- * Uses Open-Meteo (https://open-meteo.com) — free, no API key needed.
- *
- * Also paste the CSS block (below) into your existing <style> tag.
- *
- * ─────────────────────────────────────────────────────────────────
- * HOW IT WORKS
- *  • "Today" panel  → shows current conditions + today's high/low
- *  • "Select date"  → shows conditions for the selected date
- *                      (if within 16-day forecast window, else "too far ahead")
- *  • "Whole trip"   → shows a compact weather summary per stop
- *                      (current for current/past stops, arrival-day for future)
- * ─────────────────────────────────────────────────────────────────
- */
-
-/* ───── WMO weather-code → description + emoji ───── */
-const WMO = {
-  0:  ["Clear sky",          "☀️"],
-  1:  ["Mainly clear",       "🌤️"],
-  2:  ["Partly cloudy",      "⛅"],
-  3:  ["Overcast",           "☁️"],
-  45: ["Foggy",              "🌫️"],
-  48: ["Icy fog",            "🌫️"],
-  51: ["Light drizzle",      "🌦️"],
-  53: ["Drizzle",            "🌦️"],
-  55: ["Heavy drizzle",      "🌧️"],
-  61: ["Slight rain",        "🌧️"],
-  63: ["Rain",               "🌧️"],
-  65: ["Heavy rain",         "🌧️"],
-  71: ["Slight snow",        "🌨️"],
-  73: ["Snow",               "❄️"],
-  75: ["Heavy snow",         "❄️"],
-  77: ["Snow grains",        "🌨️"],
-  80: ["Showers",            "🌦️"],
-  81: ["Heavy showers",      "🌧️"],
-  82: ["Violent showers",    "⛈️"],
-  85: ["Snow showers",       "🌨️"],
-  86: ["Heavy snow showers", "❄️"],
-  95: ["Thunderstorm",       "⛈️"],
-  96: ["Thunderstorm + hail","⛈️"],
-  99: ["Thunderstorm + hail","⛈️"],
-};
-
-function wmoLabel(code) {
-  const entry = WMO[code] || ["Unknown", "🌡️"];
-  return { desc: entry[0], emoji: entry[1] };
-}
-
-/* ───── Low-level fetch ───── */
-async function fetchWeather({ lat, lng, dateStr, wantCurrent = false }) {
-  const base = "https://api.open-meteo.com/v1/forecast";
-  const params = new URLSearchParams({
-    latitude:  lat,
-    longitude: lng,
-    daily:     "temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum",
-    timezone:  "auto",
-    forecast_days: 16,
-  });
-  if (wantCurrent) {
-    params.append("current_weather", "true");
-  }
-  const res = await fetch(`${base}?${params}`);
-  if (!res.ok) throw new Error("Weather fetch failed");
-  const data = await res.json();
-
-  const daily = data.daily;
-  const idx   = daily.time.indexOf(dateStr);
-
-  let dayData = null;
-  if (idx !== -1) {
-    dayData = {
-      high:   Math.round(daily.temperature_2m_max[idx]),
-      low:    Math.round(daily.temperature_2m_min[idx]),
-      code:   daily.weathercode[idx],
-      rain:   daily.precipitation_sum[idx],
-    };
-  }
-
-  let current = null;
-  if (wantCurrent && data.current_weather) {
-    const cw = data.current_weather;
-    current = {
-      temp: Math.round(cw.temperature),
-      code: cw.weathercode,
-      wind: Math.round(cw.windspeed),
-    };
-  }
-
-  return { dayData, current, availableDates: daily.time };
-}
-
-/* ───── Render helpers ───── */
-function weatherHTML({ current = null, dayData = null, label = "", compact = false }) {
-  if (!current && !dayData) {
-    return `<div class="wx-wrap wx-empty">Weather unavailable</div>`;
-  }
-
-  if (compact) {
-    // Used in "Whole trip" list
-    const src   = dayData || current;
-    const { emoji, desc } = wmoLabel(src.code);
-    const temp  = dayData ? `${dayData.low}° – ${dayData.high}°` : `${current.temp}°`;
-    return `
-      <span class="wx-compact">
-        <span class="wx-emoji">${emoji}</span>
-        <span class="wx-temp-sm">${temp}C</span>
-        <span class="wx-desc-sm">${desc}</span>
-      </span>`;
-  }
-
-  let html = `<div class="wx-wrap">`;
-
-  if (current) {
-    const { emoji, desc } = wmoLabel(current.code);
-    html += `
-      <div class="wx-row">
-        <span class="wx-badge">Now</span>
-        <span class="wx-emoji">${emoji}</span>
-        <span class="wx-temp">${current.temp}°C</span>
-        <span class="wx-desc">${desc}</span>
-        <span class="wx-wind">💨 ${current.wind} km/h</span>
-      </div>`;
-  }
-
-  if (dayData) {
-    const { emoji, desc } = wmoLabel(dayData.code);
-    const badgeText = label || "Today";
-    html += `
-      <div class="wx-row">
-        <span class="wx-badge wx-badge-day">${badgeText}</span>
-        <span class="wx-emoji">${emoji}</span>
-        <span class="wx-temp">${dayData.low}° – ${dayData.high}°C</span>
-        <span class="wx-desc">${desc}</span>
-        ${dayData.rain > 0 ? `<span class="wx-rain">🌧 ${dayData.rain} mm</span>` : ""}
-      </div>`;
-  }
-
-  html += `</div>`;
-  return html;
-}
-
-function weatherLoadingHTML() {
-  return `<div class="wx-wrap wx-loading">
-    <span class="wx-spinner"></span> Loading weather…
-  </div>`;
-}
-
-function weatherTooFarHTML(dateStr) {
-  return `<div class="wx-wrap wx-empty">
-    📅 Forecast for <strong>${dateStr}</strong> not yet available (beyond 16-day window).
-  </div>`;
-}
-
-/* ───── Inject weather into a panel ───── */
-async function injectWeather(containerId, stop, dateStr, opts = {}) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  // Remove any existing weather block first
-  const old = container.querySelector(".wx-section");
-  if (old) old.remove();
-
-  const section = document.createElement("div");
-  section.className = "wx-section";
-  section.innerHTML = weatherLoadingHTML();
-  container.appendChild(section);
-
-  const today    = todayStr();
-  const isToday  = dateStr === today;
-
-  try {
-    // Is the date within the 16-day forecast window?
-    // We'll find out after fetching (Open-Meteo returns available dates)
-    const { dayData, current, availableDates } = await fetchWeather({
-      lat: stop.lat,
-      lng: stop.lng,
-      dateStr,
-      wantCurrent: opts.wantCurrent || isToday,
-    });
-
-    const dateInWindow = availableDates.includes(dateStr);
-
-    if (!dateInWindow && !opts.wantCurrent) {
-      section.innerHTML = weatherTooFarHTML(dateStr);
-      return;
-    }
-
-    const label = isToday ? "Today" : `Arrival (${dateStr})`;
-    section.innerHTML = weatherHTML({
-      current:  opts.wantCurrent ? current : null,
-      dayData:  dateInWindow ? dayData : null,
-      label,
-    });
-  } catch (e) {
-    section.innerHTML = `<div class="wx-wrap wx-empty">⚠️ Weather unavailable</div>`;
-    console.warn("Weather error:", e);
-  }
-}
-
-/* ────────────────────────────────────────────────────────────
- * PATCH the existing render functions
- * We monkey-patch renderTodayPanel, updateSelectInfo, and
- * renderAllPanel (whole-trip) to call weather after render.
- * ──────────────────────────────────────────────────────────── */
-
-/* Save originals */
-const _renderTodayPanel    = renderTodayPanel;
-const _updateSelectInfo    = updateSelectInfo;
-
-/* Patch renderTodayPanel */
-window.renderTodayPanel = function(body) {
-  _renderTodayPanel(body);
-  const stop = stopForDate(todayStr());
-  if (!stop) return;
-  // Append weather below whatever the panel already rendered
-  const infoEl = body;
-  injectWeather_intoEl(infoEl, stop, todayStr(), { wantCurrent: true });
-};
-
-/* Patch updateSelectInfo */
-window.updateSelectInfo = function() {
-  _updateSelectInfo();
-  // After the original runs, find the stop for selectedDate and inject
-  const stop = stopForDate(selectedDate);
-  if (!stop) return;
-  const el = document.getElementById("selectInfo");
-  if (!el) return;
-  const isToday = selectedDate === todayStr();
-  injectWeather_intoEl(el, stop, selectedDate, { wantCurrent: isToday });
-};
-
-/* Helper: append wx-section into a plain element (not by ID) */
-async function injectWeather_intoEl(container, stop, dateStr, opts = {}) {
-  const old = container.querySelector(".wx-section");
-  if (old) old.remove();
-
-  const section = document.createElement("div");
-  section.className = "wx-section";
-  section.innerHTML = weatherLoadingHTML();
-  container.appendChild(section);
-
-  const today   = todayStr();
-  const isToday = dateStr === today;
-
-  try {
-    const { dayData, current, availableDates } = await fetchWeather({
-      lat: stop.lat,
-      lng: stop.lng,
-      dateStr,
-      wantCurrent: opts.wantCurrent || isToday,
-    });
-
-    const dateInWindow = availableDates.includes(dateStr);
-
-    if (!dateInWindow && !opts.wantCurrent) {
-      section.innerHTML = weatherTooFarHTML(dateStr);
-      return;
-    }
-
-    const label = isToday ? "Today" : `Arrival (${dateStr})`;
-    section.innerHTML = weatherHTML({
-      current:  (opts.wantCurrent || isToday) ? current : null,
-      dayData:  dateInWindow ? dayData : null,
-      label,
-    });
-  } catch {
-    section.innerHTML = `<div class="wx-wrap wx-empty">⚠️ Weather unavailable</div>`;
-  }
-}
-
-/* ───── "Whole trip" panel: add weather per stop ───── */
-/* We patch renderAllPanel which is called by setMode('all') */
-/* If your original code has renderAllPanel, patch it; otherwise hook setMode */
-const _origSetMode = setMode;
-window.setMode = function(m) {
-  _origSetMode(m);
-  if (m === "all") {
-    setTimeout(injectAllWeather, 50); // wait for DOM to render
-  }
-};
-
-async function injectAllWeather() {
-  // In "all" mode the ctrl body shows whole-trip info.
-  // We append a compact per-stop weather grid.
-  const body = document.getElementById("ctrlBody");
-  if (!body) return;
-
-  const old = body.querySelector(".wx-all-grid");
-  if (old) old.remove();
-
-  const grid = document.createElement("div");
-  grid.className = "wx-all-grid";
-  grid.innerHTML = `<div class="wx-all-title">Weather at each stop</div>` +
-    stops.map(s => `
-      <div class="wx-all-row" id="wx-all-${s.id}">
-        <span class="wx-all-name">${s.name}</span>
-        <span class="wx-spinner-sm"></span>
-      </div>
-    `).join("");
-  body.appendChild(grid);
-
-  for (const stop of stops) {
-    const el = document.getElementById(`wx-all-${stop.id}`);
-    if (!el) continue;
-    try {
-      // Show current weather if we're currently at this stop; else arrival day
-      const isCurrentStop = stopForDate(todayStr())?.id === stop.id;
-      const dateStr = isCurrentStop ? todayStr() : stop.start;
-
-      const { dayData, current, availableDates } = await fetchWeather({
-        lat: stop.lat,
-        lng: stop.lng,
-        dateStr,
-        wantCurrent: isCurrentStop,
-      });
-
-      const dateInWindow = availableDates.includes(dateStr);
-      const src = isCurrentStop ? current : (dateInWindow ? dayData : null);
-
-      if (!src) {
-        el.querySelector(".wx-spinner-sm").replaceWith(
-          Object.assign(document.createElement("span"), {
-            className: "wx-all-na",
-            textContent: dateInWindow ? "No data" : "Too far ahead",
-          })
-        );
-        continue;
+      const b = tripBounds();
+      if (b && todayUTC() > b.max) {
+        mode = "all";
+      } else {
+        mode = "today";
+        if (stops.length) selectedDate = stops[0].start;
       }
-
-      const { emoji, desc } = wmoLabel(src.code);
-      const temp = isCurrentStop
-        ? `${src.temp}°C`
-        : `${dayData.low}°–${dayData.high}°C`;
-
-      el.querySelector(".wx-spinner-sm").replaceWith(
-        Object.assign(document.createElement("span"), {
-          className: "wx-all-data",
-          innerHTML: `${emoji} <b>${temp}</b> <span>${desc}</span>`,
-        })
-      );
-    } catch {
-      const sp = el.querySelector(".wx-spinner-sm");
-      if (sp) sp.replaceWith(
-        Object.assign(document.createElement("span"), {
-          className: "wx-all-na",
-          textContent: "Unavailable",
-        })
-      );
     }
+
+    renderCtrl();
+
+    // Modal close handlers
+    document.getElementById("speciesCloseBtn").addEventListener("click", closeSpeciesModal);
+    document.getElementById("speciesModalOverlay").addEventListener("click", (e) => {
+      if (e.target === document.getElementById("speciesModalOverlay")) closeSpeciesModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSpeciesModal();
+    });
   }
-}
+
+  init();
 </script>
 </body>
 </html>
