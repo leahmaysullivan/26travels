@@ -20,6 +20,769 @@
       "dateSpotted": "2026-05-27",
       "location": "Conguillio National Park",
       "description": null
+    },
+    {
+      "id": 400,
+      "name": "Monk Parakeet",
+      "dateSpotted": "2026-05-20",
+      "location": "Santiago",
+      "description": "Invasive parakeets"
+    },
+    {
+      "id": 500,
+      "name": "Chilean Mockingbird",
+      "dateSpotted": "2026-05-21",
+      "location": "Manquehuito hike",
+      "description": null
+    },
+    {
+      "id": 600,
+      "name": "Long-tailed Meadowlark",
+      "dateSpotted": "2026-05-21",
+      "location": "Manquehuito hike",
+      "description": null
+    },
+    {
+      "id": 700,
+      "name": "Woodpecker",
+      "dateSpotted": "2026-05-21",
+      "location": "Manquehuito hike",
+      "description": null
+    },
+    {
+      "id": 800,
+      "name": "Lapwing",
+      "dateSpotted": "2026-05-22",
+      "location": "Unknown",
+      "description": null
+    },
+    {
+      "id": 900,
+      "name": "Green-backed Firecrown",
+      "dateSpotted": "2026-05-23",
+      "location": "Sanctuario de Cañi",
+      "description": null
+    },
+    {
+      "id": 1000,
+      "name": "Thorn-tailed Rayadito",
+      "dateSpotted": "2026-05-23",
+      "location": "Sanctuario de Cañi",
+      "description": null
+    },
+    {
+      "id": 1100,
+      "name": "Austral Parakeet",
+      "dateSpotted": "2026-05-24",
+      "location": "Pucon",
+      "description": null
+    },
+    {
+      "id": 1200,
+      "name": "Black-faced Ibis",
+      "dateSpotted": "2026-05-24",
+      "location": "Pucon",
+      "description": null
+    },
+    {
+      "id": 1300,
+      "name": "Southern Crested Caracara",
+      "dateSpotted": "2026-05-25",
+      "location": "Lago Los Santos",
+      "description": null
+    },
+    {
+      "id": 1400,
+      "name": "Puna Plover",
+      "dateSpotted": "2026-05-30",
+      "location": "Laguna Cejar",
+      "description": null
+    },
+    {
+      "id": 1500,
+      "name": "James' Flamingo",
+      "dateSpotted": "2026-05-31",
+      "location": "Chaxa Lagoon",
+      "description": null
+    },
+    {
+      "id": 1600,
+      "name": "Andean Flamingo",
+      "dateSpotted": "2026-05-31",
+      "location": "Chaxa Lagoon",
+      "description": null
+    },
+    {
+      "id": 1700,
+      "name": "Andean Avocet",
+      "dateSpotted": "2026-05-31",
+      "location": "Chaxa Lagoon",
+      "description": null
+    },
+    {
+      "id": 1800,
+      "name": "Andean Gull",
+      "dateSpotted": "2026-05-31",
+      "location": "Chaxa Lagoon",
+      "description": null
+    },
+    {
+      "id": 1900,
+      "name": "Fabian's Lizard",
+      "dateSpotted": "2026-05-31",
+      "location": "Chaxa Lagoon",
+      "description": null
+    },
+    {
+      "id": 2000,
+      "name": "Tagua Cornuda (Horned Coot)",
+      "dateSpotted": "2026-05-31",
+      "location": "Altiplanic Lagoons",
+      "description": null
+    },
+    {
+      "id": 2100,
+      "name": "Vicuña",
+      "dateSpotted": "2026-05-31",
+      "location": "Piedras Rojas road",
+      "description": null
+    },
+    {
+      "id": 2200,
+      "name": "Lesser Rhea (Suri)",
+      "dateSpotted": "2026-05-31",
+      "location": "Piedras Rojas road",
+      "description": null
+    },
+    {
+      "id": 2300,
+      "name": "Vizcacha",
+      "dateSpotted": "2026-06-01",
+      "location": "Tatio Geysers Tour",
+      "description": null
+    },
+    {
+      "id": 2400,
+      "name": "Chilean Flamingo",
+      "dateSpotted": "2026-06-01",
+      "location": "Tatio Geysers Tour",
+      "description": null
+    },
+    {
+      "id": 2500,
+      "name": "Andean Goose",
+      "dateSpotted": "2026-06-01",
+      "location": "Tatio Geysers Tour",
+      "description": null
+    },
+    {
+      "id": 2600,
+      "name": "Guanaco",
+      "dateSpotted": "2026-06-01",
+      "location": "Road to Calama Airport",
+      "description": null
+    },
+    {
+      "id": 2700,
+      "name": "Collared Aracari",
+      "dateSpotted": "2026-06-02",
+      "location": "Chapada dos Guimarães Homestay",
+      "description": null
+    },
+    {
+      "id": 2800,
+      "name": "Red-and-green Macaw",
+      "dateSpotted": "2026-06-02",
+      "location": "Chapada dos Guimarães - waterfall trail",
+      "description": null
+    },
+    {
+      "id": 2900,
+      "name": "Leafcutter Ant",
+      "dateSpotted": "2026-06-02",
+      "location": "Chapada dos Guimarães - waterfall trail",
+      "description": null
+    },
+    {
+      "id": 3000,
+      "name": "Burrowing Owl",
+      "dateSpotted": "2026-06-03",
+      "location": "Chapada dos Guimarães - Cidade de Pedras",
+      "description": null
+    },
+    {
+      "id": 3100,
+      "name": "Toco Toucan",
+      "dateSpotted": "2026-06-04",
+      "location": "Road to Poconé",
+      "description": null
+    },
+    {
+      "id": 3200,
+      "name": "Grey-breasted Martin",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3300,
+      "name": "Great Kiskadee",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3400,
+      "name": "Chopi Blackbird",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3500,
+      "name": "Cattle Tyrant",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3600,
+      "name": "Monk Parakeet",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3700,
+      "name": "Saffron Finch",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3800,
+      "name": "Rufous Hornero",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 3900,
+      "name": "Yellow-chevroned Parakeet",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4000,
+      "name": "Jabiru",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4100,
+      "name": "Amazon Kingfisher",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4200,
+      "name": "Greyish Baywing",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4300,
+      "name": "Roseate Spoonbill",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4400,
+      "name": "Greater Rhea",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4500,
+      "name": "Campo Flicker",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4600,
+      "name": "Whistling Heron",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4700,
+      "name": "Burrowing Owl",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4800,
+      "name": "Hyacinth Macaw",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 4900,
+      "name": "Red-legged Seriema",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5000,
+      "name": "Cocoi Heron",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5100,
+      "name": "Roadside Hawk",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5200,
+      "name": "Savannah Hawk",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5300,
+      "name": "Palm Tanager",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5400,
+      "name": "Plumbeous Ibis",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5500,
+      "name": "Black-bellied Whistling Duck",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5600,
+      "name": "Wattled Jacana",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5700,
+      "name": "Yacare Caiman",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5800,
+      "name": "Crab-eating Fox",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 5900,
+      "name": "Capybara",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 6000,
+      "name": "Pampas Deer",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 6100,
+      "name": "Brazilian Tapir",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": null
+    },
+    {
+      "id": 6200,
+      "name": "Jaguar",
+      "dateSpotted": "2026-06-05",
+      "location": "Pousada Piuval",
+      "description": "Nina - resident female"
+    },
+    {
+      "id": 6300,
+      "name": "Scaled Dove",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 6400,
+      "name": "Picazuro Pigeon",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 6500,
+      "name": "Peach-fronted Parakeet",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 6600,
+      "name": "Turquoise-fronted Amazon",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 6700,
+      "name": "Neotropic Cormorant",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 6800,
+      "name": "Wood Stork",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 6900,
+      "name": "Yellow-rumped Cacique",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 7000,
+      "name": "Brazilian Teal",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 7100,
+      "name": "Tropical House Gecko",
+      "dateSpotted": "2026-06-06",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 7200,
+      "name": "Turkey Vulture",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7300,
+      "name": "Black Vulture",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7400,
+      "name": "Guira Cuckoo",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7500,
+      "name": "Long-tailed Ground Dove",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7600,
+      "name": "Greyish Saltator",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7700,
+      "name": "Black-collared Hawk",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7800,
+      "name": "Great Black Hawk",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 7900,
+      "name": "Savannah Hawk",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 8000,
+      "name": "Ringed Kingfisher",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 8100,
+      "name": "Chaco Chachalaca",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 8200,
+      "name": "Rufescent Tiger Heron",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 8300,
+      "name": "Buff-necked Ibis",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 8400,
+      "name": "Bare-faced Ibis",
+      "dateSpotted": "2026-06-06",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 8500,
+      "name": "Bare-faced Curassow",
+      "dateSpotted": "2026-06-07",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 8600,
+      "name": "Chalk-browed Mockingbird",
+      "dateSpotted": "2026-06-07",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 8700,
+      "name": "White-rumped Monjita",
+      "dateSpotted": "2026-06-07",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 8800,
+      "name": "Sunbittern",
+      "dateSpotted": "2026-06-07",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 8900,
+      "name": "Purplish Jay",
+      "dateSpotted": "2026-06-07",
+      "location": "Hotel Pantanal Mato Grosso",
+      "description": null
+    },
+    {
+      "id": 9000,
+      "name": "Green Kingfisher",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9100,
+      "name": "White-tipped Dove",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9200,
+      "name": "Southern Screamer",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9300,
+      "name": "Large-billed Tern",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9400,
+      "name": "Great Egret",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9500,
+      "name": "Green Iguana",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9600,
+      "name": "Brazilian Guinea Pig",
+      "dateSpotted": "2026-06-07",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 9700,
+      "name": "Anhinga",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 9800,
+      "name": "Snowy Egret",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 9900,
+      "name": "Rufous-tailed Jacamar",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10000,
+      "name": "Rusty-backed Spinetail",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10100,
+      "name": "Thrush-like Wren",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10200,
+      "name": "Yellow-billed Tern",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10300,
+      "name": "Large-billed Tern",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10400,
+      "name": "Giant River Otter",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10500,
+      "name": "South American Coati",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10600,
+      "name": "Jaguar",
+      "dateSpotted": "2026-06-08",
+      "location": "Porto Jofre - boat safari",
+      "description": "6-7 individuals"
+    },
+    {
+      "id": 10700,
+      "name": "Black-crowned Night Heron",
+      "dateSpotted": "2026-06-09",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10800,
+      "name": "Black-capped Donacobius",
+      "dateSpotted": "2026-06-09",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 10900,
+      "name": "Hooded Capuchin",
+      "dateSpotted": "2026-06-09",
+      "location": "Porto Jofre - boat safari",
+      "description": null
+    },
+    {
+      "id": 11000,
+      "name": "Yellow Anaconda",
+      "dateSpotted": "2026-06-09",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 11100,
+      "name": "Brown Brocket",
+      "dateSpotted": "2026-06-09",
+      "location": "Transpantaneira",
+      "description": null
+    },
+    {
+      "id": 11200,
+      "name": "Zara's Agouti",
+      "dateSpotted": "2026-06-09",
+      "location": "Transpantaneira",
+      "description": null
     }
   ]
-}
+    }
