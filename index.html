@@ -250,7 +250,7 @@
     .wx-compact { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--ink2); margin-top: 3px; }
     .wx-temp-sm { font-weight: 600; color: var(--ink); }
     .wx-desc-sm { font-size: 11px; }
-    #tab-all.active ~ * .wx-section, #tab-all.active ~ * .wx-all-grid, .wx-all-grid { display: none !important; }
+    #tab-all.active ~ * .wx-section, #tab-all.active ~ * .wx-all-grid { display: none !important; }
 
     /* ══ SPECIES LIST MODULE CSS ══ */
 
@@ -571,7 +571,7 @@
     return e ? `${fmtDate(s)} → ${fmtDate(e)}` : `From ${fmtDate(s)}`;
   }
   function esc(str) {
-    return String(str||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+      return String(str||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
   }
 
   function stopForDate(dateStr) {
@@ -1047,6 +1047,8 @@
         body.appendChild(note);
       }
 
+      renderWeather(stop, body);
+
       const next = nextStopAfter(stop);
       if (next) {
         const nb = document.createElement("div");
@@ -1066,6 +1068,139 @@
       body.appendChild(p);
       renderTimeline(null);
     }
+  }
+
+  /***********************************************************************
+   * WEATHER MODULE
+   * Uses Open-Meteo (free, no API key). Shows:
+   *   • Today/upcoming days if the stop is current or future
+   *   • A note that weather data isn't available for past stops
+   ***********************************************************************/
+  const WX_CACHE = new Map(); // key → { ts, data }
+  const WX_TTL   = 10 * 60 * 1000; // 10-minute cache
+
+  const WMO_ICONS = {
+    0:"☀️",1:"🌤️",2:"⛅",3:"☁️",
+    45:"🌫️",48:"🌫️",
+    51:"🌦️",53:"🌦️",55:"🌧️",
+    61:"🌧️",63:"🌧️",65:"🌧️",
+    71:"🌨️",73:"🌨️",75:"❄️",
+    77:"🌨️",
+    80:"🌦️",81:"🌧️",82:"⛈️",
+    85:"🌨️",86:"❄️",
+    95:"⛈️",96:"⛈️",99:"⛈️"
+  };
+  const WMO_DESC = {
+    0:"Clear",1:"Mainly clear",2:"Partly cloudy",3:"Overcast",
+    45:"Fog",48:"Icy fog",
+    51:"Light drizzle",53:"Drizzle",55:"Heavy drizzle",
+    61:"Light rain",63:"Rain",65:"Heavy rain",
+    71:"Light snow",73:"Snow",75:"Heavy snow",
+    77:"Snow grains",
+    80:"Showers",81:"Rain showers",82:"Violent showers",
+    85:"Snow showers",86:"Heavy snow showers",
+    95:"Thunderstorm",96:"Thunderstorm w/ hail",99:"Heavy thunderstorm"
+  };
+
+  async function fetchWeather(lat, lng) {
+    const key = `${lat.toFixed(3)},${lng.toFixed(3)}`;
+    const cached = WX_CACHE.get(key);
+    if (cached && Date.now() - cached.ts < WX_TTL) return cached.data;
+
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
+      `&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max` +
+      `&current_weather=true&timezone=auto&forecast_days=5`;
+
+    const res  = await fetch(url);
+    if (!res.ok) throw new Error("Weather fetch failed");
+    const data = await res.json();
+    WX_CACHE.set(key, { ts: Date.now(), data });
+    return data;
+  }
+
+  function wxRow(code, tMax, tMin, precip, wind, label, isToday) {
+    const emoji = WMO_ICONS[code] ?? "🌡️";
+    const desc  = WMO_DESC[code]  ?? "";
+    const badge = isToday
+      ? `<span class="wx-badge wx-badge-day">${label}</span>`
+      : `<span class="wx-badge">${label}</span>`;
+    const rainEl = precip > 0
+      ? `<span class="wx-rain">💧${precip.toFixed(1)}mm</span>` : "";
+    return `
+      <div class="wx-row">
+        ${badge}
+        <span class="wx-emoji">${emoji}</span>
+        <span class="wx-temp">${Math.round(tMax)}° <span style="font-weight:400;color:var(--ink2);">/ ${Math.round(tMin)}°</span></span>
+        <span class="wx-desc">${desc}</span>
+        ${rainEl}
+        <span class="wx-wind">💨${Math.round(wind)} km/h</span>
+      </div>`;
+  }
+
+  function renderWeather(stop, body) {
+    const section = document.createElement("div");
+    section.className = "wx-section";
+
+    const wrap = document.createElement("div");
+    wrap.className = "wx-wrap wx-loading";
+    wrap.innerHTML = `<span class="wx-spinner"></span>Loading weather…`;
+    section.appendChild(wrap);
+    body.appendChild(section);
+
+    const today     = todayUTC();
+    const stopStart = parseDateUTC(stop.start);
+    const stopEnd   = stop.end ? parseDateUTC(stop.end) : null;
+
+    // If the stop ended in the past, show a note instead
+    if (stopEnd && stopEnd < today) {
+      wrap.className = "wx-wrap wx-empty";
+      wrap.innerHTML = "Weather unavailable for past stops.";
+      return;
+    }
+
+    fetchWeather(stop.lat, stop.lng)
+      .then(data => {
+        const daily  = data.daily;
+        const dates  = daily.time;            // ["2026-06-15", …]
+        const todayS = todayStr();
+
+        // Show up to 5 days that overlap with the stop's stay
+        const rows = [];
+        for (let i = 0; i < dates.length; i++) {
+          const d = dates[i];
+          // Only show days within the stop's range (or from today if already there)
+          if (stopEnd && d > toYMD(stopEnd)) continue;
+          if (d < todayS) continue;
+
+          const isToday = (d === todayS);
+          const dt = parseDateUTC(d);
+          const label = isToday ? "Today"
+            : dt.toLocaleDateString("en-GB", { weekday:"short", day:"numeric", month:"short", timeZone:"UTC" });
+
+          rows.push(wxRow(
+            daily.weathercode[i],
+            daily.temperature_2m_max[i],
+            daily.temperature_2m_min[i],
+            daily.precipitation_sum[i] ?? 0,
+            daily.windspeed_10m_max[i] ?? 0,
+            label,
+            isToday
+          ));
+          if (rows.length >= 4) break;
+        }
+
+        if (!rows.length) {
+          wrap.className = "wx-wrap wx-empty";
+          wrap.innerHTML = "No forecast available for these dates.";
+        } else {
+          wrap.className = "wx-wrap";
+          wrap.innerHTML = rows.join("");
+        }
+      })
+      .catch(() => {
+        wrap.className = "wx-wrap wx-empty";
+        wrap.innerHTML = "Weather unavailable right now.";
+      });
   }
 
   function renderAll(body) {
