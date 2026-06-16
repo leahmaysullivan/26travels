@@ -57,17 +57,50 @@
       "name": "Lima",
       "country": "Peru",
       "start": "2026-06-11",
-      "end": "2026-06-14",
+      "end": "2026-06-11",
       "lat": -12.0464,
       "lng": -77.0428,
       "note": "The starting point for exploring Peru"
     },
     {
+      "id": "700",
+      "name": "Arequipa",
+      "country": "Peru",
+      "start": "2026-06-12",
+      "end": "2026-06-12",
+      "lat": -16.3975,
+      "lng": -71.5227,
+      "note": ""
+    },
+    
+    {
+      "id": "750",
+      "name": "Colca Canyon",
+      "country": "Peru",
+      "start": "2026-06-13",
+      "end": "2026-06-14",
+      "lat": -15.6333,
+      "lng": -71.9833,
+      "note": ""
+    },
+
+    {
+      "id": "775",
+      "name": "Cusco",
+      "country": "Peru",
+      "start": "2026-06-15",
+      "end": "2026-06-15",
+      "lat": -13.5320,
+      "lng": -71.9675,
+      "note": ""
+    },
+    
+    {
       "id": "800",
       "name": "Amazon",
       "country": "Peru",
-      "start": "2026-06-15",
-      "end": "2026-06-22",
+      "start": "2026-06-16",
+      "end": "2026-06-23",
       "lat": -12.0406,
       "lng": -71.7230,
       "note": "Manu National Park. Starting in Cusco."
@@ -76,7 +109,7 @@
       "id": "900",
       "name": "Cusco",
       "country": "Peru",
-      "start": "2026-06-23",
+      "start": "2026-06-24",
       "end": "2026-06-25",
       "lat": -13.5320,
       "lng": -71.9675,
@@ -87,37 +120,27 @@
       "name": "Machu Picchu",
       "country": "Peru",
       "start": "2026-06-26",
-      "end": "2026-06-30",
+      "end": "2026-07-01",
       "lat": -13.2632,
       "lng": -72.5453,
-      "note": "Starting in Cusco"
-    },
-    {
-      "id": "1100",
-      "name": "Colca Canyon",
-      "country": "Peru",
-      "start": "2026-07-04",
-      "end": "2026-07-04",
-      "lat": -15.6333,
-      "lng": -71.9833,
       "note": ""
     },
     {
       "id": "1200",
-      "name": "Nazca Lines",
+      "name": "Paracas",
       "country": "Peru",
-      "start": "2026-07-05",
-      "end": "2026-07-05",
-      "lat": -14.7272,
-      "lng": -75.1300,
+      "start": "2026-07-02",
+      "end": "2026-07-03",
+      "lat": -13.8361,
+      "lng": -76.2550,
       "note": ""
     },
     {
       "id": "1300",
       "name": "Lima",
       "country": "Peru",
-      "start": "2026-07-06",
-      "end": "2026-07-06",
+      "start": "2026-07-04",
+      "end": "2026-07-04",
       "lat": -12.0464,
       "lng": -77.0428,
       "note": ""
@@ -126,7 +149,7 @@
       "id": "1400",
       "name": "Huaraz",
       "country": "Peru",
-      "start": "2026-07-07",
+      "start": "2026-07-05",
       "end": "2026-07-09",
       "lat": -9.5279,
       "lng": -77.5278,
