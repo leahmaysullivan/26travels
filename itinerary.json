@@ -126,73 +126,63 @@
       "note": ""
     },
     {
-      "id": "1200",
+      "id": "1100",
       "name": "Paracas",
       "country": "Peru",
       "start": "2026-07-02",
-      "end": "2026-07-03",
+      "end": "2026-07-02",
       "lat": -13.8361,
       "lng": -76.2550,
       "note": ""
     },
     {
-      "id": "1300",
+      "id": "1200",
       "name": "Lima",
       "country": "Peru",
-      "start": "2026-07-04",
+      "start": "2026-07-03",
       "end": "2026-07-04",
       "lat": -12.0464,
       "lng": -77.0428,
       "note": ""
     },
     {
-      "id": "1400",
-      "name": "Huaraz",
-      "country": "Peru",
+      "id": "1300",
+      "name": "Quito",
+      "country": "Ecuador",
       "start": "2026-07-05",
-      "end": "2026-07-09",
-      "lat": -9.5279,
-      "lng": -77.5278,
+      "end": "2026-07-06",
+      "lat": -0.2295,
+      "lng": -78.4678,
+      "note": ""
+    },
+    {
+      "id": "1400",
+      "name": "Reserva Las Tangaras",
+      "country": "Ecuador",
+      "start": "2026-07-07",
+      "end": "2026-07-11",
+      "lat": -0.0866,
+      "lng": -78.7673,
+      "note": ""
+    },
+    {
+      "id": "1500",
+      "name": "Mindo",
+      "country": "Ecuador",
+      "start": "2026-07-12",
+      "end": "2026-07-12",
+      "lat": -0.0529,
+      "lng": -78.7747,
       "note": ""
     },
     {
       "id": "1500",
       "name": "Cotopaxi",
       "country": "Ecuador",
-      "start": "2026-07-12",
-      "end": "2026-07-13",
+      "start": "2026-07-13",
+      "end": "2026-07-15",
       "lat": -0.6843,
       "lng": -78.4374,
-      "note": ""
-    },
-    {
-      "id": "1600",
-      "name": "Machalilla National Park",
-      "country": "Ecuador",
-      "start": "2026-07-14",
-      "end": "2026-07-16",
-      "lat": -1.5833,
-      "lng": -80.8000,
-      "note": ""
-    },
-    {
-      "id": "1700",
-      "name": "Quito",
-      "country": "Ecuador",
-      "start": "2026-07-17",
-      "end": "2026-07-17",
-      "lat": -0.2295,
-      "lng": -78.5243,
-      "note": ""
-    },
-    {
-      "id": "1800",
-      "name": "Reserva Las Tangaras",
-      "country": "Ecuador",
-      "start": "2026-07-18",
-      "end": "2026-07-20",
-      "lat": 0.0500,
-      "lng": -78.9833,
       "note": ""
     },
     {
