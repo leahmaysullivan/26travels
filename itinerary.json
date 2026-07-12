@@ -244,6 +244,56 @@
       "lat": 8.4667,
       "lng": -83.5833,
       "note": "Corcovado National Park. Ending in Puerto Jimenez."
+    },
+    {
+      "id": "2600",
+      "name": "Managua",
+      "country": "Nicaragua",
+      "start": "2026-08-15",
+      "end": "2026-08-20",
+      "lat": 12.1364,
+      "lng": -86.2514,
+      "note": ""
+    },
+    {
+      "id": "2700",
+      "name": "San Salvador",
+      "country": "El Salvador",
+      "start": "2026-08-21",
+      "end": "2026-08-26",
+      "lat": 13.6929,
+      "lng": -89.2182,
+      "note": ""
+    },
+    {
+      "id": "2800",
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "start": "2026-08-27",
+      "end": "2026-09-01",
+      "lat": 14.6349,
+      "lng": -90.5069,
+      "note": ""
+    },
+    {
+      "id": "2900",
+      "name": "Belmopan",
+      "country": "Belize",
+      "start": "2026-09-02",
+      "end": "2026-09-07",
+      "lat": 17.2510,
+      "lng": -88.7590,
+      "note": ""
+    },
+    {
+      "id": "3000",
+      "name": "Cancún",
+      "country": "Mexico",
+      "start": "2026-09-08",
+      "end": "2026-09-13",
+      "lat": 21.1619,
+      "lng": -86.8515,
+      "note": "Final stop of the journey"
     }
   ]
 }
