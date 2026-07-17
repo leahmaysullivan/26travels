@@ -186,13 +186,43 @@
       "note": ""
     },
     {
-      "id": "1900",
+      "id": "1600",
+      "name": "Cali",
+      "country": "Colombia",
+      "start": "2026-07-16",
+      "end": "2026-07-17",
+      "lat": 3.4500,
+      "lng": -76.5333,
+      "note": ""
+    },
+    {
+      "id": "1700",
+      "name": "Salento",
+      "country": "Colombia",
+      "start": "2026-07-18",
+      "end": "2026-07-20",
+      "lat": 3.6375,
+      "lng": -75.5703,
+      "note": ""
+    },
+    {
+      "id": "1800",
       "name": "Bogotá",
       "country": "Colombia",
       "start": "2026-07-21",
-      "end": "2026-07-30",
+      "end": "2026-07-25",
       "lat": 4.7110,
       "lng": -74.0721,
+      "note": ""
+    },
+    {
+      "id": "1900",
+      "name": "Medellín",
+      "country": "Colombia",
+      "start": "2026-07-26",
+      "end": "2026-07-30",
+      "lat": 6.2502,
+      "lng": -75.5676,
       "note": ""
     },
     {
