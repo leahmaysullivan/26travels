@@ -43,7 +43,7 @@
       "note": ""
     },
     {
-      "id": "600",
+      "id": "500",
       "name": "Pantanal",
       "country": "Brazil",
       "start": "2026-06-05",
@@ -53,7 +53,7 @@
       "note": ""
     },
     {
-      "id": "650",
+      "id": "600",
       "name": "Lima",
       "country": "Peru",
       "start": "2026-06-11",
@@ -176,7 +176,7 @@
       "note": ""
     },
     {
-      "id": "1500",
+      "id": "1550",
       "name": "Cotopaxi",
       "country": "Ecuador",
       "start": "2026-07-13",
