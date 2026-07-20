@@ -462,6 +462,49 @@
       margin-bottom: 8px;
       padding-left: 2px;
     }
+
+    /* species classification filter */
+    .species-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: var(--accent);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.species-card-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.species-card-name-wrap .species-icon { width: 15px; height: 15px; }
+
+.species-filter-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 10px 20px 14px;
+  border-bottom: 1px solid var(--ink3);
+  flex-shrink: 0;
+}
+.species-filter-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--ink3);
+  background: white;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.species-filter-btn:hover { background: rgba(200,105,42,0.1); }
+.species-filter-btn.active { background: rgba(200,105,42,0.16); border-color: rgba(200,105,42,0.55); }
+.species-filter-btn .species-icon { width: 16px; height: 16px; }
+.species-filter-btn.all-btn { font-size: 10px; font-weight: 700; color: var(--ink2); }
+.species-filter-btn.active.all-btn { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -482,6 +525,9 @@
 <div class="species-modal-overlay" id="speciesModalOverlay">
   <div class="species-modal" role="dialog" aria-modal="true" aria-labelledby="speciesModalTitle">
     <div class="species-modal-header">
+    </div>
+    <div class="species-filter-bar" id="speciesFilterBar"></div>
+    <div class="species-modal-body" id="speciesModalBody"></div>
       <div>
         <p class="species-modal-title" id="speciesModalTitle">Species List</p>
         <p class="species-modal-subtitle" id="speciesModalSubtitle"></p>
@@ -686,113 +732,136 @@
 
   /** Render a single species card element */
   function buildSpeciesCard(sp) {
-    const card = document.createElement("div");
-    card.className = "species-card";
+  const card = document.createElement("div");
+  card.className = "species-card";
 
-    const top = document.createElement("div");
-    top.className = "species-card-top";
+  const top = document.createElement("div");
+  top.className = "species-card-top";
 
-    const name = document.createElement("span");
-    name.className = "species-card-name";
-    name.textContent = sp.name;
+  const nameWrap = document.createElement("div");
+  nameWrap.className = "species-card-name-wrap";
+  if (sp.group) nameWrap.appendChild(makeGroupIconEl(sp.group));
+  const name = document.createElement("span");
+  name.className = "species-card-name";
+  name.textContent = sp.name;
+  nameWrap.appendChild(name);
 
-    const dateBadge = document.createElement("span");
-    dateBadge.className = "species-card-date";
-    dateBadge.textContent = fmtDateShort(sp.dateSpotted);
+  const dateBadge = document.createElement("span");
+  dateBadge.className = "species-card-date";
+  dateBadge.textContent = fmtDateShort(sp.dateSpotted);
 
-    top.appendChild(name);
-    top.appendChild(dateBadge);
-    card.appendChild(top);
+  top.appendChild(nameWrap);
+  top.appendChild(dateBadge);
+  card.appendChild(top);
 
-    if (sp.location) {
-      const loc = document.createElement("div");
-      loc.className = "species-card-location";
-      loc.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${esc(sp.location)}`;
-      card.appendChild(loc);
-    }
-
-    if (sp.description) {
-      const desc = document.createElement("div");
-      desc.className = "species-card-desc";
-      desc.textContent = sp.description;
-      card.appendChild(desc);
-    }
-
-    return card;
+  if (sp.location) {
+    const loc = document.createElement("div");
+    loc.className = "species-card-location";
+    loc.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${esc(sp.location)}`;
+    card.appendChild(loc);
+  }
+  if (sp.description) {
+    const desc = document.createElement("div");
+    desc.className = "species-card-desc";
+    desc.textContent = sp.description;
+    card.appendChild(desc);
+  }
+  return card;
   }
 
   /***********************************************************************
    * SPECIES MODAL
    ***********************************************************************/
-  function openSpeciesModal(stop, stopName, isWholeTrip) {
-    const overlay = document.getElementById("speciesModalOverlay");
-    const title   = document.getElementById("speciesModalTitle");
-    const subtitle = document.getElementById("speciesModalSubtitle");
-    const body    = document.getElementById("speciesModalBody");
+  
+function openSpeciesModal(stop, stopName, isWholeTrip) {
+  modalContext = isWholeTrip ? { type: "all" } : { type: "stop", stop, stopName };
+  activeGroupFilter = null;
+  renderSpeciesFilterBar();
+  renderSpeciesModalBody();
+  document.getElementById("speciesModalOverlay").classList.add("open");
+}
 
-    body.innerHTML = "";
+function renderSpeciesFilterBar() {
+  const bar = document.getElementById("speciesFilterBar");
+  bar.innerHTML = "";
 
-    if (isWholeTrip) {
-      // Group by stop
-      title.innerHTML = `Whole Trip Species <span class="species-count-badge">${allSpecies.length}</span>`;
-      subtitle.textContent = "All species spotted so far";
+  const pool = modalContext.type === "all"
+    ? allSpecies
+    : speciesForStop(modalContext.stop);
+  const groupsPresent = [...new Set(pool.map(sp => sp.group).filter(Boolean))];
 
-      if (!allSpecies.length) {
-        body.appendChild(emptyState());
-      } else {
-        // Group by stopId, preserve stop order
-        const grouped = new Map();
-        for (const stop of stops) {
-          const sps = speciesForStop(stop);
-          if (sps.length) grouped.set(stop, sps);
-        }
-        // Also catch any species whose dateSpotted doesn't fall within any known stop's range
-        const matchedIds = new Set([...grouped.values()].flat().map(sp => sp.id));
-        const unknownSps = allSpecies.filter(sp => !matchedIds.has(sp.id))
-                                     .sort((a,b) => a.dateSpotted.localeCompare(b.dateSpotted));
+  const allBtn = document.createElement("button");
+  allBtn.className = "species-filter-btn all-btn" + (activeGroupFilter === null ? " active" : "");
+  allBtn.textContent = "ALL";
+  allBtn.title = "All groups";
+  allBtn.onclick = () => { activeGroupFilter = null; renderSpeciesFilterBar(); renderSpeciesModalBody(); };
+  bar.appendChild(allBtn);
 
-        grouped.forEach((sps, stop) => {
-          const group = document.createElement("div");
-          group.className = "species-stop-group";
+  groupsPresent.forEach(group => {
+    const btn = document.createElement("button");
+    btn.className = "species-filter-btn" + (activeGroupFilter === group ? " active" : "");
+    btn.title = GROUP_LABELS[group] || group;
+    btn.appendChild(makeGroupIconEl(group));
+    btn.onclick = () => { activeGroupFilter = group; renderSpeciesFilterBar(); renderSpeciesModalBody(); };
+    bar.appendChild(btn);
+  });
+}
 
-          const groupTitle = document.createElement("div");
-          groupTitle.className = "species-stop-group-title";
-          groupTitle.textContent = `${stop.name}${stop.country ? `, ${stop.country}` : ""} — ${sps.length} species`;
-          group.appendChild(groupTitle);
+function renderSpeciesModalBody() {
+  const title = document.getElementById("speciesModalTitle");
+  const subtitle = document.getElementById("speciesModalSubtitle");
+  const body = document.getElementById("speciesModalBody");
+  body.innerHTML = "";
 
-          sps.forEach(sp => group.appendChild(buildSpeciesCard(sp)));
-          body.appendChild(group);
-        });
+  const applyFilter = list => activeGroupFilter
+    ? list.filter(sp => sp.group === activeGroupFilter)
+    : list;
 
-        if (unknownSps.length) {
-          const group = document.createElement("div");
-          group.className = "species-stop-group";
-          const groupTitle = document.createElement("div");
-          groupTitle.className = "species-stop-group-title";
-          groupTitle.textContent = `Other — ${unknownSps.length} species`;
-          group.appendChild(groupTitle);
-          unknownSps.forEach(sp => group.appendChild(buildSpeciesCard(sp)));
-          body.appendChild(group);
-        }
-      }
+  if (modalContext.type === "all") {
+    const shown = applyFilter(allSpecies);
+    title.innerHTML = `Whole Trip Species <span class="species-count-badge">${shown.length}</span>`;
+    subtitle.textContent = "All species spotted so far";
 
-    } else {
-      // Single stop
-      const sps = speciesForStop(stop);
-      title.innerHTML = `${esc(stopName)} <span class="species-count-badge">${sps.length}</span>`;
-      subtitle.textContent = sps.length
-        ? `${sps.length} species recorded at this stop`
-        : "No species recorded yet";
+    if (!shown.length) { body.appendChild(emptyState()); return; }
 
-      if (!sps.length) {
-        body.appendChild(emptyState());
-      } else {
-        sps.forEach(sp => body.appendChild(buildSpeciesCard(sp)));
-      }
+    const grouped = new Map();
+    for (const stop of stops) {
+      const sps = applyFilter(speciesForStop(stop));
+      if (sps.length) grouped.set(stop, sps);
     }
+    const matchedIds = new Set([...grouped.values()].flat().map(sp => sp.id));
+    const unknownSps = shown.filter(sp => !matchedIds.has(sp.id))
+                             .sort((a,b) => a.dateSpotted.localeCompare(b.dateSpotted));
 
-    overlay.classList.add("open");
+    grouped.forEach((sps, stop) => {
+      const group = document.createElement("div");
+      group.className = "species-stop-group";
+      const gt = document.createElement("div");
+      gt.className = "species-stop-group-title";
+      gt.textContent = `${stop.name}${stop.country ? `, ${stop.country}` : ""} — ${sps.length} species`;
+      group.appendChild(gt);
+      sps.forEach(sp => group.appendChild(buildSpeciesCard(sp)));
+      body.appendChild(group);
+    });
+
+    if (unknownSps.length) {
+      const group = document.createElement("div");
+      group.className = "species-stop-group";
+      const gt = document.createElement("div");
+      gt.className = "species-stop-group-title";
+      gt.textContent = `Other — ${unknownSps.length} species`;
+      group.appendChild(gt);
+      unknownSps.forEach(sp => group.appendChild(buildSpeciesCard(sp)));
+      body.appendChild(group);
+    }
+  } else {
+    const sps = applyFilter(speciesForStop(modalContext.stop));
+    title.innerHTML = `${esc(modalContext.stopName)} <span class="species-count-badge">${sps.length}</span>`;
+    subtitle.textContent = sps.length ? `${sps.length} species recorded at this stop` : "No species recorded yet";
+    if (!sps.length) { body.appendChild(emptyState()); return; }
+    sps.forEach(sp => body.appendChild(buildSpeciesCard(sp)));
   }
+}
 
   function emptyState() {
     const el = document.createElement("div");
@@ -804,7 +873,33 @@
   function closeSpeciesModal() {
     document.getElementById("speciesModalOverlay").classList.remove("open");
   }
+const GROUP_ICONS = {
+  fish:         "icons/fishSil.png",
+  mammal:       "icons/mammalSil.png",
+  invertebrate: "icons/InvertibrateSil.png",
+  reptile:      "icons/reptileSil.png",
+  amphibian:    "icons/anphibSil.png",
+  bird:         "icons/birdSil.png"
+};
+const GROUP_LABELS = {
+  fish: "Fish", mammal: "Mammal", invertebrate: "Invertebrate",
+  reptile: "Reptile", amphibian: "Amphibian", bird: "Bird"
+};
 
+let modalContext = null;      // { type:'stop', stop } or { type:'all' }
+let activeGroupFilter = null; // null = show all groups
+
+function makeGroupIconEl(group, size) {
+  const el = document.createElement("span");
+  el.className = "species-icon";
+  if (size) { el.style.width = size + "px"; el.style.height = size + "px"; }
+  const src = GROUP_ICONS[group];
+  if (src) {
+    el.style.webkitMaskImage = `url(${src})`;
+    el.style.maskImage = `url(${src})`;
+  }
+  return el;
+      }
   /***********************************************************************
    * GATE
    ***********************************************************************/
