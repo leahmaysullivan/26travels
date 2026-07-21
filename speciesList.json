@@ -135,146 +135,146 @@
     {"id": 13300, "name": "Gould's jewelfront", "dateSpotted": "2026-06-17", "location": "Hummingbird garden", "description": null, "group": "bird"},
     {"id": 13400, "name": "Golden-tailed sapphire", "dateSpotted": "2026-06-17", "location": "Hummingbird garden", "description": null, "group": "bird"},
     {"id": 13500, "name": "Fire ant", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "invertebrate"},
-    {"id": 13600, "name": "Blue and yellow macaw", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"}
-{"id": 13700, "name": "Hoatzin", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"}
-{"id": 13800, "name": "Horned screamer", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"}
-{"id": 13900, "name": "Social flycatcher", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"}
-{"id": 14000, "name": "Smooth-billed ani", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"}
-{"id": 14100, "name": "Black-crowned nunbird", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"}
-{"id": 14200, "name": "Owl butterfly", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "invertebrate"}
-{"id": 14300, "name": "Manu poison frog", "dateSpotted": "2026-06-17", "location": "Night walk", "description": null, "group": "amphibian"}
-{"id": 14400, "name": "Yellow-crowned parrot", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"}
-{"id": 14500, "name": "Chestnut-fronted macaw", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"}
-{"id": 14600, "name": "Blue-headed parrot", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"}
-{"id": 14700, "name": "White-eyed parakeet", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"}
-{"id": 14800, "name": "Red howler monkey", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "mammal"}
-{"id": 14900, "name": "Amazon kingbird", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"}
-{"id": 15000, "name": "White-throated toucan", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 15100, "name": "Yellow-crowned parrot", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 15200, "name": "Yellow-spotted Amazon river turtle", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "reptile"}
-{"id": 15300, "name": "Sand-coloured nighthawk", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 15400, "name": "White caiman", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "reptile"}
-{"id": 15500, "name": "Black caiman", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "reptile"}
-{"id": 15600, "name": "Brown-throated three-toed sloth", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "mammal"}
-{"id": 15700, "name": "Orinoco goose", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 15800, "name": "Pied plover", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 15900, "name": "Greater yellow-headed vulture", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 16000, "name": "White-winged swallow", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"}
-{"id": 16100, "name": "Tarantula", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "invertebrate"}
-{"id": 16200, "name": "Cane toad", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "amphibian"}
-{"id": 16300, "name": "Snake sp.", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "reptile"}
-{"id": 16400, "name": "Tree frog", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "amphibian"}
-{"id": 16500, "name": "Black spider monkey", "dateSpotted": "2026-06-20", "location": "Casa Matsiguenka trails", "description": null, "group": "mammal"}
-{"id": 16600, "name": "Screaming piha", "dateSpotted": "2026-06-20", "location": "Macaw clay lick", "description": null, "group": "bird"}
-{"id": 16700, "name": "Golden silk web spider", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "invertebrate"}
-{"id": 16800, "name": "Crystal frog", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "amphibian"}
-{"id": 16900, "name": "Giant Amazon land snail", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "invertebrate"}
-{"id": 17000, "name": "Army ants", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "invertebrate"}
-{"id": 17100, "name": "Three-striped poison frog", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "amphibian"}
-{"id": 17200, "name": "Amazonian rabbit", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "mammal"}
-{"id": 17300, "name": "Jaguar", "dateSpotted": "2026-06-21", "location": "Boat ride Casa Matsiguenka to Limonal ranger station", "description": null, "group": "mammal"}
-{"id": 17400, "name": "Lineated woodpecker", "dateSpotted": "2026-06-21", "location": "Limonal ranger station to Dorado (Explora Golden) Lodge", "description": null, "group": "bird"}
-{"id": 17500, "name": "Violaceous jay", "dateSpotted": "2026-06-21", "location": "Dorado (Explora Golden) Lodge", "description": null, "group": "bird"}
-{"id": 17600, "name": "Silver-beaked tanager", "dateSpotted": "2026-06-22", "location": "Dorado (Explora Golden) Lodge", "description": null, "group": "bird"}
-{"id": 17700, "name": "Vermilion flycatcher", "dateSpotted": "2026-06-22", "location": "Boat ride to Harpia Lodge", "description": null, "group": "bird"}
-{"id": 17800, "name": "Fasciated tiger heron", "dateSpotted": "2026-06-22", "location": "Boat ride to Harpia Lodge", "description": null, "group": "bird"}
-{"id": 17900, "name": "Slate-throated redstart", "dateSpotted": "2026-06-23", "location": "Road from Atalaya Port to Cusco", "description": null, "group": "bird"}
-{"id": 18000, "name": "Mountain caracara", "dateSpotted": "2026-06-27", "location": "Salkantay Pass", "description": null, "group": "bird"}
-{"id": 18100, "name": "Mitred parakeet", "dateSpotted": "2026-06-29", "location": "Salkantay Trek", "description": null, "group": "bird"}
-{"id": 18200, "name": "Tropical parula", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 18300, "name": "Pale-mandibled aracari", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 18400, "name": "Flame-rumped tanager", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 18500, "name": "Barred puffbird", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 18600, "name": "Booted racket-tail", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 18700, "name": "Pastures rain frog", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "amphibian"}
-{"id": 18800, "name": "Red-billed parrot", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 18900, "name": "Graceful snail-eater snake", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"}
-{"id": 19000, "name": "Yellow-throated toucan", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19100, "name": "Equatorial anole", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"}
-{"id": 19200, "name": "Gem anole", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"}
-{"id": 19300, "name": "White-whiskered hermit", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19400, "name": "Orange-billed sparrow", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19500, "name": "Brown violetear", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19600, "name": "Empress brilliant", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19700, "name": "Purple-bibbed whitetip", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19800, "name": "Rufous-tailed hummingbird", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 19900, "name": "Green-crowned woodnymph", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20000, "name": "Green-crowned brilliant", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20100, "name": "Torrent duck", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20200, "name": "Scaled antpitta", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20300, "name": "Ornate cat-eyed snake", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"}
-{"id": 20400, "name": "Cope's tropical racer", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"}
-{"id": 20500, "name": "Red-faced spinetail", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20600, "name": "Crested guan", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20700, "name": "Grey-breasted wood wren", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20800, "name": "Three-striped warbler", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 20900, "name": "Red-tailed squirrel", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "mammal"}
-{"id": 21000, "name": "Plain-brown woodcreeper", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21100, "name": "Purple-crowned fairy", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21200, "name": "White-capped dipper", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21300, "name": "Torrent tyrannulet", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21400, "name": "Black phoebe", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21500, "name": "Barred parakeet", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21600, "name": "Club-winged manakin", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21700, "name": "Rufous-tailed hummingbird", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21800, "name": "Choco brushfinch", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 21900, "name": "Choco toucan", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22000, "name": "Silver-throated tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22100, "name": "Golden tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22200, "name": "Spotted woodcreeper", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22300, "name": "Buff-fronted foliage-gleaner", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22400, "name": "Beryl-spangled tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22500, "name": "Wedge-billed woodcreeper", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22600, "name": "White-shouldered tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22700, "name": "Strong-billed woodcreeper", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22800, "name": "Lesser greenlet", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 22900, "name": "Bay wren", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 23000, "name": "Yellow-throated chlorospingus", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"}
-{"id": 23100, "name": "Common blunthead", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "reptile"}
-{"id": 23200, "name": "Watchful rainfrog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"}
-{"id": 23300, "name": "Yellow-groin rainfrog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"}
-{"id": 23400, "name": "Compact terrier snake", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "reptile"}
-{"id": 23500, "name": "Blue-thighed rainfrog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"}
-{"id": 23600, "name": "Tamarind owl caterpillar", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "invertebrate"}
-{"id": 23700, "name": "Palm tree frog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"}
-{"id": 23800, "name": "Grey four-eyed opossum", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "mammal"}
-{"id": 23900, "name": "Hippie anole", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "reptile"}
-{"id": 24000, "name": "Kinkajou", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "mammal"}
-{"id": 24100, "name": "Blue-grey tanager", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"}
-{"id": 24200, "name": "Tropical kingbird", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"}
-{"id": 24300, "name": "Rusty-margined flycatcher", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"}
-{"id": 24400, "name": "Bananaquit", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"}
-{"id": 24500, "name": "White-tailed deer", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "mammal"}
-{"id": 24600, "name": "Andean gull", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "bird"}
-{"id": 24700, "name": "Chestnut-winged cinclodes", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "bird"}
-{"id": 24800, "name": "Gunther's whorltail iguana", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "reptile"}
-{"id": 24900, "name": "Andean teal", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "bird"}
-{"id": 25000, "name": "Green iguana", "dateSpotted": "2026-07-17", "location": "Cali", "description": null, "group": "reptile"}
-{"id": 25100, "name": "Yellow-headed caracara", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25200, "name": "Saffron finch", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25300, "name": "Ruddy ground dove", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25400, "name": "Red-crowned woodpecker", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25500, "name": "American black vulture", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25600, "name": "Bare-faced ibis", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25700, "name": "Western cattle egret", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25800, "name": "Blue-headed parrot", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 25900, "name": "Buff-necked ibis", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26000, "name": "Common pauraque", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26100, "name": "Yellow oriole", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26200, "name": "Thick-billed euphonia", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26300, "name": "Scrub tanager", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26400, "name": "Southern rough-winged swallow", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26500, "name": "Eared dove", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26600, "name": "Southern house wren", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26700, "name": "Spectacled parrotlet", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26800, "name": "Streaked saltator", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 26900, "name": "Rufous-winged tanager", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 27000, "name": "Blue-necked tanager", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 27100, "name": "Green honeycreeper", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"}
-{"id": 27200, "name": "Cinnamon flycatcher", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"}
-{"id": 27300, "name": "Collared Inca hummingbird", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"}
-{"id": 27400, "name": "Andean guan", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"}
-{"id": 27500, "name": "Collared trogon", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"}
+    {"id": 13600, "name": "Blue and yellow macaw", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"},
+{"id": 13700, "name": "Hoatzin", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"},
+{"id": 13800, "name": "Horned screamer", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"},
+{"id": 13900, "name": "Social flycatcher", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"},
+{"id": 14000, "name": "Smooth-billed ani", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"},
+{"id": 14100, "name": "Black-crowned nunbird", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "bird"},
+{"id": 14200, "name": "Owl butterfly", "dateSpotted": "2026-06-17", "location": "Machuhuassy Lagoon", "description": null, "group": "invertebrate"},
+{"id": 14300, "name": "Manu poison frog", "dateSpotted": "2026-06-17", "location": "Night walk", "description": null, "group": "amphibian"},
+{"id": 14400, "name": "Yellow-crowned parrot", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"},
+{"id": 14500, "name": "Chestnut-fronted macaw", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"},
+{"id": 14600, "name": "Blue-headed parrot", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"},
+{"id": 14700, "name": "White-eyed parakeet", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"},
+{"id": 14800, "name": "Red howler monkey", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "mammal"},
+{"id": 14900, "name": "Amazon kingbird", "dateSpotted": "2026-06-18", "location": "Manu clay lick", "description": null, "group": "bird"},
+{"id": 15000, "name": "White-throated toucan", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 15100, "name": "Yellow-crowned parrot", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 15200, "name": "Yellow-spotted Amazon river turtle", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "reptile"},
+{"id": 15300, "name": "Sand-coloured nighthawk", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 15400, "name": "White caiman", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "reptile"},
+{"id": 15500, "name": "Black caiman", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "reptile"},
+{"id": 15600, "name": "Brown-throated three-toed sloth", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "mammal"},
+{"id": 15700, "name": "Orinoco goose", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 15800, "name": "Pied plover", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 15900, "name": "Greater yellow-headed vulture", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 16000, "name": "White-winged swallow", "dateSpotted": "2026-06-19", "location": "Boat ride into reserved zone", "description": null, "group": "bird"},
+{"id": 16100, "name": "Tarantula", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "invertebrate"},
+{"id": 16200, "name": "Cane toad", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "amphibian"},
+{"id": 16300, "name": "Snake sp.", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "reptile"},
+{"id": 16400, "name": "Tree frog", "dateSpotted": "2026-06-19", "location": "Casa Matsiguenka", "description": null, "group": "amphibian"},
+{"id": 16500, "name": "Black spider monkey", "dateSpotted": "2026-06-20", "location": "Casa Matsiguenka trails", "description": null, "group": "mammal"},
+{"id": 16600, "name": "Screaming piha", "dateSpotted": "2026-06-20", "location": "Macaw clay lick", "description": null, "group": "bird"},
+{"id": 16700, "name": "Golden silk web spider", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "invertebrate"},
+{"id": 16800, "name": "Crystal frog", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "amphibian"},
+{"id": 16900, "name": "Giant Amazon land snail", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "invertebrate"},
+{"id": 17000, "name": "Army ants", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "invertebrate"},
+{"id": 17100, "name": "Three-striped poison frog", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "amphibian"},
+{"id": 17200, "name": "Amazonian rabbit", "dateSpotted": "2026-06-20", "location": "Nightwalk", "description": null, "group": "mammal"},
+{"id": 17300, "name": "Jaguar", "dateSpotted": "2026-06-21", "location": "Boat ride Casa Matsiguenka to Limonal ranger station", "description": null, "group": "mammal"},
+{"id": 17400, "name": "Lineated woodpecker", "dateSpotted": "2026-06-21", "location": "Limonal ranger station to Dorado (Explora Golden) Lodge", "description": null, "group": "bird"},
+{"id": 17500, "name": "Violaceous jay", "dateSpotted": "2026-06-21", "location": "Dorado (Explora Golden) Lodge", "description": null, "group": "bird"},
+{"id": 17600, "name": "Silver-beaked tanager", "dateSpotted": "2026-06-22", "location": "Dorado (Explora Golden) Lodge", "description": null, "group": "bird"},
+{"id": 17700, "name": "Vermilion flycatcher", "dateSpotted": "2026-06-22", "location": "Boat ride to Harpia Lodge", "description": null, "group": "bird"},
+{"id": 17800, "name": "Fasciated tiger heron", "dateSpotted": "2026-06-22", "location": "Boat ride to Harpia Lodge", "description": null, "group": "bird"},
+{"id": 17900, "name": "Slate-throated redstart", "dateSpotted": "2026-06-23", "location": "Road from Atalaya Port to Cusco", "description": null, "group": "bird"},
+{"id": 18000, "name": "Mountain caracara", "dateSpotted": "2026-06-27", "location": "Salkantay Pass", "description": null, "group": "bird"},
+{"id": 18100, "name": "Mitred parakeet", "dateSpotted": "2026-06-29", "location": "Salkantay Trek", "description": null, "group": "bird"},
+{"id": 18200, "name": "Tropical parula", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 18300, "name": "Pale-mandibled aracari", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 18400, "name": "Flame-rumped tanager", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 18500, "name": "Barred puffbird", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 18600, "name": "Booted racket-tail", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 18700, "name": "Pastures rain frog", "dateSpotted": "2026-07-07", "location": "Reserva Las Tangaras", "description": null, "group": "amphibian"},
+{"id": 18800, "name": "Red-billed parrot", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 18900, "name": "Graceful snail-eater snake", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"},
+{"id": 19000, "name": "Yellow-throated toucan", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19100, "name": "Equatorial anole", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"},
+{"id": 19200, "name": "Gem anole", "dateSpotted": "2026-07-08", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"},
+{"id": 19300, "name": "White-whiskered hermit", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19400, "name": "Orange-billed sparrow", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19500, "name": "Brown violetear", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19600, "name": "Empress brilliant", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19700, "name": "Purple-bibbed whitetip", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19800, "name": "Rufous-tailed hummingbird", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 19900, "name": "Green-crowned woodnymph", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20000, "name": "Green-crowned brilliant", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20100, "name": "Torrent duck", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20200, "name": "Scaled antpitta", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20300, "name": "Ornate cat-eyed snake", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"},
+{"id": 20400, "name": "Cope's tropical racer", "dateSpotted": "2026-07-09", "location": "Reserva Las Tangaras", "description": null, "group": "reptile"},
+{"id": 20500, "name": "Red-faced spinetail", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20600, "name": "Crested guan", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20700, "name": "Grey-breasted wood wren", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20800, "name": "Three-striped warbler", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 20900, "name": "Red-tailed squirrel", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "mammal"},
+{"id": 21000, "name": "Plain-brown woodcreeper", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21100, "name": "Purple-crowned fairy", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21200, "name": "White-capped dipper", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21300, "name": "Torrent tyrannulet", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21400, "name": "Black phoebe", "dateSpotted": "2026-07-10", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21500, "name": "Barred parakeet", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21600, "name": "Club-winged manakin", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21700, "name": "Rufous-tailed hummingbird", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21800, "name": "Choco brushfinch", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 21900, "name": "Choco toucan", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22000, "name": "Silver-throated tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22100, "name": "Golden tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22200, "name": "Spotted woodcreeper", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22300, "name": "Buff-fronted foliage-gleaner", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22400, "name": "Beryl-spangled tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22500, "name": "Wedge-billed woodcreeper", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22600, "name": "White-shouldered tanager", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22700, "name": "Strong-billed woodcreeper", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22800, "name": "Lesser greenlet", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 22900, "name": "Bay wren", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 23000, "name": "Yellow-throated chlorospingus", "dateSpotted": "2026-07-11", "location": "Reserva Las Tangaras", "description": null, "group": "bird"},
+{"id": 23100, "name": "Common blunthead", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "reptile"},
+{"id": 23200, "name": "Watchful rainfrog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"},
+{"id": 23300, "name": "Yellow-groin rainfrog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"},
+{"id": 23400, "name": "Compact terrier snake", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "reptile"},
+{"id": 23500, "name": "Blue-thighed rainfrog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"},
+{"id": 23600, "name": "Tamarind owl caterpillar", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "invertebrate"},
+{"id": 23700, "name": "Palm tree frog", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "amphibian"},
+{"id": 23800, "name": "Grey four-eyed opossum", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "mammal"},
+{"id": 23900, "name": "Hippie anole", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "reptile"},
+{"id": 24000, "name": "Kinkajou", "dateSpotted": "2026-07-11", "location": "Mindo - nightwalk", "description": null, "group": "mammal"},
+{"id": 24100, "name": "Blue-grey tanager", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"},
+{"id": 24200, "name": "Tropical kingbird", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"},
+{"id": 24300, "name": "Rusty-margined flycatcher", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"},
+{"id": 24400, "name": "Bananaquit", "dateSpotted": "2026-07-12", "location": "Mindo", "description": null, "group": "bird"},
+{"id": 24500, "name": "White-tailed deer", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "mammal"},
+{"id": 24600, "name": "Andean gull", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "bird"},
+{"id": 24700, "name": "Chestnut-winged cinclodes", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "bird"},
+{"id": 24800, "name": "Gunther's whorltail iguana", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "reptile"},
+{"id": 24900, "name": "Andean teal", "dateSpotted": "2026-07-14", "location": "Cotopaxi National Park", "description": null, "group": "bird"},
+{"id": 25000, "name": "Green iguana", "dateSpotted": "2026-07-17", "location": "Cali", "description": null, "group": "reptile"},
+{"id": 25100, "name": "Yellow-headed caracara", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25200, "name": "Saffron finch", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25300, "name": "Ruddy ground dove", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25400, "name": "Red-crowned woodpecker", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25500, "name": "American black vulture", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25600, "name": "Bare-faced ibis", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25700, "name": "Western cattle egret", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25800, "name": "Blue-headed parrot", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 25900, "name": "Buff-necked ibis", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26000, "name": "Common pauraque", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26100, "name": "Yellow oriole", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26200, "name": "Thick-billed euphonia", "dateSpotted": "2026-07-18", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26300, "name": "Scrub tanager", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26400, "name": "Southern rough-winged swallow", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26500, "name": "Eared dove", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26600, "name": "Southern house wren", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26700, "name": "Spectacled parrotlet", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26800, "name": "Streaked saltator", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 26900, "name": "Rufous-winged tanager", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 27000, "name": "Blue-necked tanager", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 27100, "name": "Green honeycreeper", "dateSpotted": "2026-07-19", "location": "Finca Evelyza", "description": null, "group": "bird"},
+{"id": 27200, "name": "Cinnamon flycatcher", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"},
+{"id": 27300, "name": "Collared Inca hummingbird", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"},
+{"id": 27400, "name": "Andean guan", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"},
+{"id": 27500, "name": "Collared trogon", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"},
 {"id": 27600, "name": "Green jay (Inca)", "dateSpotted": "2026-07-20", "location": "Cocora Valley", "description": null, "group": "bird"}
   ]
 }
