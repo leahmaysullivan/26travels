@@ -276,6 +276,26 @@
       "note": "Corcovado National Park. Ending in Puerto Jimenez."
     },
     {
+      "id": "2550",
+      "name": "Puerto Jiménez",
+      "country": "Costa Rica",
+      "start": "2026-08-15",
+      "end": "2026-08-16",
+      "lat": 8.5363,
+      "lng": -83.3053,
+      "note": ""
+    },
+    {
+      "id": "2575",
+      "name":"San José",
+      "country": "Costa Rica",
+      "start": "2026-08-17",
+      "end": "2026-08-17",
+      "lat": 9.9347,
+      "lng": -84.0875,
+      "note": ""
+    },
+    {
       "id": "2600",
       "name": "Managua",
       "country": "Nicaragua",
